@@ -11,13 +11,14 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <HomeEnroll />
+      
       <DrivenByExcellence />
       <Stats />
       <WhatMakesUsDifferent />
       <Testimonials />
       <Programs />
       <TheCampus />
+      <HomeEnroll />
     </>
   )
 }

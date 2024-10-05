@@ -22,7 +22,7 @@ export default function Stats() {
           observer.unobserve(entry.target)
         }
       },
-      { threshold: 0.2 } // Trigger when 20% of the section is visible
+      { threshold: 0.5 } // Trigger when 20% of the section is visible
     )
 
     if (sectionRef.current) {

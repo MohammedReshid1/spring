@@ -1,40 +1,54 @@
-import Image from 'next/image'
+"use client"
+
+import React from 'react'
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards"
 
 export default function Testimonials() {
   const testimonials = [
     {
       quote: "My experience here has been transformative. The faculty and resources have prepared me for a successful career.",
       author: "Jane Doe",
-      role: "Computer Science Graduate",
-      avatar: "/placeholder.svg"
+      role: "Computer Science Graduate"
     },
     {
       quote: "The diverse community and innovative programs have broadened my perspective and opened up new opportunities.",
       author: "John Smith",
-      role: "Business Administration Student",
-      avatar: "/placeholder.svg"
+      role: "Business Administration Student"
+    },
+    {
+      quote: "I've gained practical skills and industry connections that have jumpstarted my career.",
+      author: "Emily Johnson",
+      role: "Engineering Graduate"
+    },
+    {
+      quote: "The supportive environment and challenging curriculum have helped me grow both personally and professionally.",
+      author: "Michael Brown",
+      role: "Psychology Student"
     }
   ]
 
   return (
-    <section className="py-16 bg-muted">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">What Our Students Say</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-card p-6 rounded-lg shadow">
-              <p className="mb-4 italic">"{testimonial.quote}"</p>
-              <div className="flex items-center">
-                <Image src={testimonial.avatar} alt={testimonial.author} width={50} height={50} className="rounded-full mr-4" />
-                <div>
-                  <div className="font-semibold">{testimonial.author}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                </div>
+    <div className="h-[40rem] w-full bg-gray-100 relative flex flex-col items-center justify-center overflow-hidden">
+      <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-gray-200 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">What Our Students Say</h2>
+        <InfiniteMovingCards
+          items={testimonials}
+          direction="right"
+          speed="slow"
+          className="py-4"
+        >
+          {(testimonial) => (
+            <div className="bg-[#111827] p-6 rounded-xl w-[400px] h-[250px] flex-shrink-0 mx-4 border border-gray-700 flex flex-col justify-between">
+              <p className="mb-4 text-white italic text-sm">{testimonial.quote}</p>
+              <div>
+                <div className="font-semibold text-gray-300">{testimonial.author}</div>
+                <div className="text-sm text-gray-400">{testimonial.role}</div>
               </div>
             </div>
-          ))}
-        </div>
+          )}
+        </InfiniteMovingCards>
       </div>
-    </section>
+    </div>
   )
 }

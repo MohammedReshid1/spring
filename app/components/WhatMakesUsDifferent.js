@@ -13,31 +13,29 @@ export default function WhatMakesUsDifferent() {
 
   return (
     <section className="py-16 bg-background">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">What Makes Us Different</h2>
+      <div className="container mx-auto px-4 lg:px-8">
+        <h2 className="text-3xl font-bold mb-12 text-center">What Makes Us Different</h2>
         
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
-          {/* Text content on the left */}
-          <div className="md:w-1/2 md:pr-8"> {/* Added padding on the right */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex flex-col items-center lg:flex-row lg:items-center lg:justify-between gap-12 lg:gap-16">
+          <div className="w-full lg:w-1/2 max-w-2xl order-1 lg:order-2">
+            <Image 
+              src="/images/what_makes_us_different.jpg" 
+              alt="What Makes Us Different" 
+              width={800} 
+              height={600} 
+              className="rounded-lg w-full h-auto object-cover mb-8 lg:mb-0" 
+            />
+          </div>
+          
+          <div className="w-full lg:w-1/2 max-w-2xl order-2 lg:order-1 flex flex-col justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {differences.map((item, index) => (
                 <div key={index} className="flex items-center">
-                  <CheckCircle className="text-primary mr-2" />
+                  <CheckCircle className="text-primary mr-3 flex-shrink-0" />
                   <span>{item}</span>
                 </div>
               ))}
             </div>
-          </div>
-          
-          {/* Image on the right with negative margin */}
-          <div className="mb-4 md:mb-0 md:w-1/2 text-center md:text-left py-4">
-            <Image 
-              src="/images/what_makes_us_different.jpg" 
-              alt="Excellence" 
-              width={500} 
-              height={300} 
-              className="rounded-lg mx-auto md:mx-0 md:-ml-8"  // Adjusted negative margin on left
-            />
           </div>
         </div>
       </div>

@@ -18,12 +18,12 @@ const Header = () => {
       </div>
       <nav className="hidden lg:block">
         <ul className="flex space-x-6">
-        <li><Link href="/" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Home</Link></li>
-              <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>About Us</Link></li>
-              <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Events</Link></li>
-              <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Success Stories</Link></li>
-              <li><Link href="/admissions" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Admissions</Link></li>
-              <li><Link href="/contact" className={buttonVariants({ variant: "outline", className: "text-[1.25rem] font-light" })}>Contact Us</Link></li>
+          <li><Link href="/" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Home</Link></li>
+          <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>About Us</Link></li>
+          <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Events</Link></li>
+          <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Success Stories</Link></li>
+          <li><Link href="/admissions" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Admissions</Link></li>
+          <li><Link href="/contact" className={buttonVariants({ variant: "outline", className: "text-[1.25rem] font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white" })}>Contact Us</Link></li>
         </ul>
       </nav>
 
@@ -39,16 +39,16 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>
-              <SheetTitle className="text-3xl">Menu</SheetTitle>
+              <SheetTitle className="text-xl">Menu</SheetTitle>
               <SheetDescription></SheetDescription>
             </SheetHeader>
             <ul className="space-y-6 mt-10">
-              <li><Link href="/" className={buttonVariants({ variant: "link", className: "text-xl font-light" })}>Home</Link></li>
-              <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-xl font-light" })}>About Us</Link></li>
-              <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-xl font-light" })}>Events</Link></li>
-              <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-xl font-light" })}>Success Stories</Link></li>
-              <li><Link href="/admissions" className={buttonVariants({ variant: "link", className: "text-xl font-light" })}>Admissions</Link></li>
-              <li><Link href="/contact" className={buttonVariants({ variant: "outline", className: "text-xl font-light" })}>Contact Us</Link></li>
+              <li><Link href="/" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>Home</Link></li>
+              <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>About Us</Link></li>
+              <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>Events</Link></li>
+              <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>Success Stories</Link></li>
+              <li><Link href="/admissions" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>Admissions</Link></li>
+              <li><Link href="/contact" className={buttonVariants({ variant: "outline", className: "text-[0.95rem] font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white rounded-3xl" })}>Contact Us</Link></li>
             </ul>
           </SheetContent>
         </Sheet>

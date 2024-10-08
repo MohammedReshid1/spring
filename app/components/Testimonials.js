@@ -39,7 +39,7 @@ export default function Testimonials() {
           className="py-4"
         >
           {(testimonial) => (
-            <div className="bg-[#111827] p-6 rounded-xl w-[400px] h-[250px] flex-shrink-0 mx-4 border border-gray-700 flex flex-col justify-between">
+            <div className="bg-[#111827] p-6 rounded-xl w-[400px] h-[250px] flex-shrink-0 mx-4 border border-gray-700 flex flex-col justify-between cursor-pointer">
               <p className="mb-4 text-white italic text-sm">{testimonial.quote}</p>
               <div>
                 <div className="font-semibold text-gray-300">{testimonial.author}</div>

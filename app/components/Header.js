@@ -9,6 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
   return (
@@ -23,7 +24,17 @@ const Header = () => {
           <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Events</Link></li>
           <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Success Stories</Link></li>
           <li><Link href="/admissions" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Admissions</Link></li>
-          <li><Link href="/contact" className={buttonVariants({ variant: "outline", className: "text-[1.25rem] font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white" })}>Contact Us</Link></li>
+          <li>
+            <Link 
+              href="/contact" 
+              className={cn(
+                buttonVariants({ variant: "outline" }),
+                "text-[1.05rem] font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white border-[#b18aa7]"
+              )}
+            >
+              Contact Us
+            </Link>
+          </li>
         </ul>
       </nav>
 
@@ -48,7 +59,17 @@ const Header = () => {
               <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>Events</Link></li>
               <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>Success Stories</Link></li>
               <li><Link href="/admissions" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>Admissions</Link></li>
-              <li><Link href="/contact" className={buttonVariants({ variant: "outline", className: "text-[0.95rem] font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white rounded-3xl" })}>Contact Us</Link></li>
+              <li>
+                <Link 
+                  href="/contact" 
+                  className={cn(
+                    buttonVariants({ variant: "outline" }),
+                    "text-[0.95rem] font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white border-[#b18aa7] rounded-3xl"
+                  )}
+                >
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </SheetContent>
         </Sheet>

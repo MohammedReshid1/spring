@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${montserrat.variable} font-sans`}>
       <body className={montserrat.className}>
         <Header />
-        <main>{children}</main>  {/* The content of each page will be injected here */}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

@@ -12,7 +12,7 @@ export default function Programs() {
     },
     { 
       name: "Primary School Program", 
-      description: "Building Strong Foundations for Tomorrow’s Leaders!",
+      description: "Building Strong Foundations for Tomorrow's Leaders!",
       image: "/images/primary.jpg"
     },
     { 
@@ -25,7 +25,9 @@ export default function Programs() {
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">Our Programs</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center">
+          Our <span style={{ color: '#b18aa7' }}>Programs</span>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, index) => (
             <Card key={index} className="group relative overflow-hidden flex flex-col h-[400px] cursor-pointer">

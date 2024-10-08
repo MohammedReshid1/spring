@@ -1,6 +1,21 @@
+"use client"
+
 import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect } from 'react'
+
+const words = ["Excellence", "Innovation", "Growth", "Success"]
 
 export default function DrivenByExcellence() {
+  const [currentWord, setCurrentWord] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWord((prev) => (prev + 1) % words.length)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
@@ -15,7 +30,25 @@ export default function DrivenByExcellence() {
             />
           </div>
           <div className="w-full lg:w-1/2 max-w-2xl flex flex-col justify-center">
-            <h2 className="text-3xl font-bold mb-6">Driven by Excellence</h2>
+            <h2 className="text-3xl font-bold mb-6">
+              Driven by{' '}
+              <span className="relative inline-block">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={words[currentWord]}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute left-0"
+                    style={{ color: '#b18aa7' }}
+                  >
+                    {words[currentWord]}
+                  </motion.span>
+                </AnimatePresence>
+                <span className="invisible">Excellence</span>
+              </span>
+            </h2>
             <p className="mb-4">
               Our institution is committed to fostering an environment of academic rigor, innovation, and personal growth.
             </p>

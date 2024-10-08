@@ -14,7 +14,9 @@ export default function WhatMakesUsDifferent() {
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
-        <h2 className="text-3xl font-bold mb-12 text-center">What Makes Us Different</h2>
+        <h2 className="text-3xl font-bold mb-12 text-center">
+          What Makes Us <span style={{ color: '#b18aa7' }}>Different</span>
+        </h2>
         
         <div className="flex flex-col items-center lg:flex-row lg:items-center lg:justify-between gap-12 lg:gap-16">
           <div className="w-full lg:w-1/2 max-w-2xl order-1 lg:order-2">

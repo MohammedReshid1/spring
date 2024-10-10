@@ -19,7 +19,7 @@ export default function TheCampus() {
 
   return (
     <section className="py-16 bg-muted overflow-hidden">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <motion.h2 
           className="text-3xl font-bold mb-8 text-center"
           initial={{ opacity: 0, y: -20 }}
@@ -32,7 +32,7 @@ export default function TheCampus() {
           {images.map((image, index) => (
             <motion.div
               key={index}
-              className="relative overflow-hidden rounded-lg group"
+              className="relative overflow-hidden rounded-lg group aspect-[4/3]"
               initial={{ opacity: 0, y: 50 }}
               animate={isLoaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.2 }}
@@ -40,9 +40,9 @@ export default function TheCampus() {
               <Image 
                 src={image.src} 
                 alt={image.alt} 
-                width={400} 
-                height={300} 
-                className="transition-transform duration-500 ease-in-out group-hover:scale-110"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <p className="text-white text-lg font-semibold">{image.alt}</p>

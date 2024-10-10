@@ -11,25 +11,25 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
-const Header = () => {
+export default function Header() {
   return (
-    <header className="flex justify-between items-center py-0 px-4 bg-white shadow-sm">
+    <header className="flex justify-between items-center py-2 px-4 bg-white shadow-sm">
       <div className="logo">
-        <Image src="/images/Logo.png" alt="Academy Logo" width={150} height={80} />
+        <Image src="/images/Logo.png" alt="Academy Logo" width={120} height={60} className="object-contain" />
       </div>
       <nav className="hidden lg:block">
-        <ul className="flex space-x-6">
-          <li><Link href="/" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Home</Link></li>
-          <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>About Us</Link></li>
-          <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Events</Link></li>
-          <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Success Stories</Link></li>
-          <li><Link href="/admissions" className={buttonVariants({ variant: "link", className: "text-[1.25rem] font-light" })}>Admissions</Link></li>
+        <ul className="flex space-x-4">
+          <li><Link href="/" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>Home</Link></li>
+          <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>About Us</Link></li>
+          <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>Events</Link></li>
+          <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>Success Stories</Link></li>
+          <li><Link href="/admissions" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>Admissions</Link></li>
           <li>
             <Link 
               href="/contact" 
               className={cn(
                 buttonVariants({ variant: "outline" }),
-                "text-[1.05rem] font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white border-[#b18aa7]"
+                "text-sm font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white border-[#b18aa7]"
               )}
             >
               Contact Us
@@ -38,11 +38,10 @@ const Header = () => {
         </ul>
       </nav>
 
-      {/* Mobile Navigation - Sheet */}
       <nav className="lg:hidden">
         <Sheet>
-          <SheetTrigger className={buttonVariants({ variant: "outline" })}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <SheetTrigger className={buttonVariants({ variant: "outline", size: "icon" })}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 18L20 18" stroke="#000000" strokeWidth="2" strokeLinecap="round"/>
               <path d="M4 12L20 12" stroke="#000000" strokeWidth="2" strokeLinecap="round"/>
               <path d="M4 6L20 6" stroke="#000000" strokeWidth="2" strokeLinecap="round"/>
@@ -50,21 +49,21 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>
-              <SheetTitle className="text-xl">Menu</SheetTitle>
+              <SheetTitle className="text-lg">Menu</SheetTitle>
               <SheetDescription></SheetDescription>
             </SheetHeader>
-            <ul className="space-y-6 mt-10">
-              <li><Link href="/" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>Home</Link></li>
-              <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>About Us</Link></li>
-              <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>Events</Link></li>
-              <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>Success Stories</Link></li>
-              <li><Link href="/admissions" className={buttonVariants({ variant: "link", className: "text-[0.95rem] font-light" })}>Admissions</Link></li>
+            <ul className="space-y-4 mt-6">
+              <li><Link href="/" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>Home</Link></li>
+              <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>About Us</Link></li>
+              <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>Events</Link></li>
+              <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>Success Stories</Link></li>
+              <li><Link href="/admissions" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>Admissions</Link></li>
               <li>
                 <Link 
                   href="/contact" 
                   className={cn(
                     buttonVariants({ variant: "outline" }),
-                    "text-[0.95rem] font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white border-[#b18aa7] rounded-3xl"
+                    "text-sm font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white border-[#b18aa7] rounded-full"
                   )}
                 >
                   Contact Us
@@ -76,6 +75,4 @@ const Header = () => {
       </nav>
     </header>
   );
-};
-
-export default Header;
+}

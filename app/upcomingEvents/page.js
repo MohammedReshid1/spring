@@ -33,6 +33,34 @@ const events = [
   }
 ]
 
+const EventIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="200"
+    height="200"
+    viewBox="0 0 200 200"
+    fill="none"
+    className="mx-auto mb-4"
+  >
+    <rect x="40" y="40" width="120" height="120" rx="8" fill="#b18aa7" />
+    <path
+      d="M70 70H130M70 100H130M70 130H110"
+      stroke="white"
+      strokeWidth="8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <circle cx="150" cy="150" r="30" fill="#111827" />
+    <path
+      d="M150 140V160M140 150H160"
+      stroke="white"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)
+
 export default function EventsPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [filter, setFilter] = useState('all')
@@ -100,13 +128,7 @@ export default function EventsPage() {
       </div>
 
       <div className="text-center">
-        <Image
-          src="/placeholder.svg?height=200&width=200"
-          alt="Create Event Illustration"
-          width={200}
-          height={200}
-          className="mx-auto mb-4"
-        />
+        <EventIcon />
         <Button className="bg-[#b18aa7] hover:bg-[#9a7691] text-white">
           Create an Event
         </Button>

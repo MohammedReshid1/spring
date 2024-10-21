@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Search, Calendar } from 'lucide-react'
@@ -9,27 +9,30 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-const events = [
+const initialEvents = [
   {
-    id: 1,
+    id: "1",
     title: "Web Development Workshop",
     description: "Learn the latest web development techniques and tools.",
     image: "/images/campus.jpg?height=200&width=300",
-    date: "2024-05-15"
+    date: "2024-05-15",
+    location: "Campus"
   },
   {
-    id: 2,
+    id: "2",
     title: "AI in Education Conference",
     description: "Explore the impact of AI on modern education systems.",
     image: "/images/campus.jpg?height=200&width=300",
-    date: "2024-06-20"
+    date: "2024-06-20",
+    location: "Campus"
   },
   {
-    id: 3,
+    id: "3",
     title: "Student Art Exhibition",
     description: "Showcase of our students' best artistic creations.",
     image: "/images/campus.jpg?height=200&width=300",
-    date: "2024-04-10"
+    date: "2024-04-10",
+    location: "Campus"
   }
 ]
 
@@ -64,6 +67,37 @@ const EventIcon = () => (
 export default function EventsPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [filter, setFilter] = useState('all')
+  const [events, setEvents] = useState(initialEvents)
+
+  // Fetch events from the API
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch('/api/events')
+        const data = await response.json()
+  
+        // Check if the response is successful and has events
+        if (data.status == 'success' && Array.isArray(data.events)) {
+          // Format the fetched events if needed and set to the state
+          const formattedEvents = data.events.map(event => ({
+            id: event.id,
+            title: event.title,
+            description: event.description,
+            image: "/images/campus.jpg?height=200&width=300", // Placeholder image
+            date: new Date(event.starts_on * 1000).toISOString().split('T')[0], // Convert Unix timestamp to date string
+            location: event.location
+          }))
+          // setEvents((prevEvents) => [...prevEvents, ...formattedEvents])
+          setEvents(formattedEvents)
+          } else {
+          console.error('Failed to fetch events from API')
+        }
+      } catch (error) {
+        console.error('Error fetching events:', error)
+      }
+    }
+    fetchEvents()
+  }, [])
 
   const filteredEvents = events.filter(event => {
     const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -121,6 +155,7 @@ export default function EventsPage() {
                   <Calendar size={16} className="mr-2" />
                   {new Date(event.date).toLocaleDateString()}
                 </div>
+                {event.location && <p className="text-sm text-gray-600 mt-2">Location: {event.location}</p>}
               </CardContent>
             </Card>
           </motion.div>

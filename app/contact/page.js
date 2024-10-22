@@ -23,13 +23,41 @@ const ContactPage = () => {
     setFormData(prevState => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    // Reset form after submission
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    
+    // Data were sending to the backend
+    const payload = {
+      first_name: formData.name,
+      email: formData.email,
+      message: formData.subject + " \n" + formData.message,
+    };
+  
+    try {
+      const response = await fetch("http://64.112.124.78:8001/send_email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+  
+      
+      const result = await response.json();
+      console.log("Email sent successfully:", result);
+  
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      // Error mssage if needed
+    }
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">

@@ -1,35 +1,43 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { buttonVariants } from "@/components/ui/button";
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { buttonVariants } from "@/components/ui/button"
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/sheet"
+import { cn } from "@/lib/utils"
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const closeSheet = () => {
+    setIsOpen(false)
+  }
+
   return (
-    <header className="flex justify-between items-center py-2 px-4 bg-white shadow-sm">
-      <div className="logo">
-        <Image src="/images/Logo.png" alt="Academy Logo" width={120} height={60} className="object-contain" />
+    <header className="flex justify-between items-center py-1.5 px-4 bg-white shadow-sm h-18 overflow-visible">
+      <div className="logo -my-5">
+        <Image src="/images/Logo.png" alt="Academy Logo" width={150} height={75} className="object-contain" />
       </div>
       <nav className="hidden lg:block">
-        <ul className="flex space-x-4">
-          <li><Link href="/" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>Home</Link></li>
-          <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>About Us</Link></li>
-          <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>Events</Link></li>
-          <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>Success Stories</Link></li>
-          <li><Link href="/gallery" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>Gallery</Link></li>
+        <ul className="flex space-x-3">
+          <li><Link href="/" className={buttonVariants({ variant: "link", className: "text-sm font-light py-1.5 px-2" })}>Home</Link></li>
+          <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-sm font-light py-1.5 px-2" })}>About Us</Link></li>
+          <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-sm font-light py-1.5 px-2" })}>Events</Link></li>
+          <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-sm font-light py-1.5 px-2" })}>Success Stories</Link></li>
+          <li><Link href="/gallery" className={buttonVariants({ variant: "link", className: "text-sm font-light py-1.5 px-2" })}>Gallery</Link></li>
           <li>
             <Link 
               href="/contact" 
               className={cn(
-                buttonVariants({ variant: "outline" }),
-                "text-sm font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white border-[#b18aa7]"
+                buttonVariants({ variant: "outline", size: "sm" }),
+                "text-sm font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white border-[#b18aa7] py-1.5 px-3"
               )}
             >
               Contact Us
@@ -39,9 +47,9 @@ export default function Header() {
       </nav>
 
       <nav className="lg:hidden">
-        <Sheet>
-          <SheetTrigger className={buttonVariants({ variant: "outline", size: "icon" })}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger className={buttonVariants({ variant: "outline", size: "sm", className: "p-2" })}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 18L20 18" stroke="#000000" strokeWidth="2" strokeLinecap="round"/>
               <path d="M4 12L20 12" stroke="#000000" strokeWidth="2" strokeLinecap="round"/>
               <path d="M4 6L20 6" stroke="#000000" strokeWidth="2" strokeLinecap="round"/>
@@ -50,14 +58,13 @@ export default function Header() {
           <SheetContent>
             <SheetHeader>
               <SheetTitle className="text-lg">Menu</SheetTitle>
-              <SheetDescription></SheetDescription>
             </SheetHeader>
             <ul className="space-y-4 mt-6">
-              <li><Link href="/" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>Home</Link></li>
-              <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>About Us</Link></li>
-              <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>Events</Link></li>
-              <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>Success Stories</Link></li>
-              <li><Link href="/gallery" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>Gallery</Link></li>
+              <li><Link href="/" className={buttonVariants({ variant: "link", className: "text-sm font-light" })} onClick={closeSheet}>Home</Link></li>
+              <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-sm font-light" })} onClick={closeSheet}>About Us</Link></li>
+              <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-sm font-light" })} onClick={closeSheet}>Events</Link></li>
+              <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-sm font-light" })} onClick={closeSheet}>Success Stories</Link></li>
+              <li><Link href="/gallery" className={buttonVariants({ variant: "link", className: "text-sm font-light" })} onClick={closeSheet}>Gallery</Link></li>
               <li>
                 <Link 
                   href="/contact" 
@@ -65,6 +72,7 @@ export default function Header() {
                     buttonVariants({ variant: "outline" }),
                     "text-sm font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white border-[#b18aa7] rounded-full"
                   )}
+                  onClick={closeSheet}
                 >
                   Contact Us
                 </Link>
@@ -74,5 +82,5 @@ export default function Header() {
         </Sheet>
       </nav>
     </header>
-  );
+  )
 }

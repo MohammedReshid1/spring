@@ -23,7 +23,7 @@ export default function Header() {
           <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>About Us</Link></li>
           <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>Events</Link></li>
           <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>Success Stories</Link></li>
-          <li><Link href="/admissions" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>Admissions</Link></li>
+          <li><Link href="/gallery" className={buttonVariants({ variant: "link", className: "text-base font-light" })}>Gallery</Link></li>
           <li>
             <Link 
               href="/contact" 
@@ -57,7 +57,7 @@ export default function Header() {
               <li><Link href="/about" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>About Us</Link></li>
               <li><Link href="/upcomingEvents" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>Events</Link></li>
               <li><Link href="/success" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>Success Stories</Link></li>
-              <li><Link href="/admissions" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>Admissions</Link></li>
+              <li><Link href="/gallery" className={buttonVariants({ variant: "link", className: "text-sm font-light" })}>Gallery</Link></li>
               <li>
                 <Link 
                   href="/contact" 

@@ -50,10 +50,7 @@ export default function DrivenByExcellence() {
               </span>
             </h2>
             <p className="mb-4">
-              Our institution is committed to fostering an environment of academic rigor, innovation, and personal growth.
-            </p>
-            <p>
-              We strive to empower our students with the knowledge, skills, and experiences they need to excel in their chosen fields and make a positive impact on the world.
+            Spring of Knowledge Academy S.C. is a legally established private school in 2006 to contribute its part in the human capital development program of the country. 
             </p>
           </div>
         </div>

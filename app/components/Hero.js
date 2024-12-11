@@ -47,7 +47,7 @@ export default function Hero() {
         </motion.h1>
         
         <div className="h-8 mb-8">
-          <TypingAnimation text="Start your journey with us today!" speed={70} />
+          <TypingAnimation text="Where Excelence Is A Habit Not A Goal" speed={70} />
         </div>
 
         <motion.div

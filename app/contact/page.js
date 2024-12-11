@@ -153,11 +153,11 @@ const ContactPage = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Phone className="text-[#b18aa7]" />
-                  <span>+251 (123) 456-7890</span>
+                  <span>+251-96-053-1010</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="text-[#b18aa7]" />
-                  <span>info@springofknowledge.edu.et</span>
+                  <span>ethiospring@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock className="text-[#b18aa7]" />

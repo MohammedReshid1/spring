@@ -8,10 +8,9 @@ export default function Stats() {
   const sectionRef = useRef(null)
 
   const stats = [
-    { label: 'Students', value: 10000, suffix: '+' },
-    { label: 'Courses', value: 200, suffix: '+' },
-    { label: 'Graduation Rate', value: 95, suffix: '%' },
-    { label: 'Career Placement', value: 88, suffix: '%' },
+    { label: 'Campuses Across The City', value: 5},
+    { label: 'Students Throught All Campuses', value: 3000, suffix: '+' },
+    { label: 'Years Of Experience', value: 15, suffix: '+' },
   ]
 
   useEffect(() => {
@@ -39,7 +38,7 @@ export default function Stats() {
   return (
     <section ref={sectionRef} className="py-16 bg-muted">
       <div className="container mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
               <div className="text-4xl font-bold mb-2">

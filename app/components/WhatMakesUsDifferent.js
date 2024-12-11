@@ -3,12 +3,10 @@ import Image from 'next/image'
 
 export default function WhatMakesUsDifferent() {
   const differences = [
-    'Innovative curriculum',
-    'World-class faculty',
-    'State-of-the-art facilities',
-    'Global partnerships',
-    'Career-focused programs',
-    'Diverse and inclusive community',
+    'Every child has the potential to learn and excel',
+    'Regard the prior knowledge and experience of the child',
+    'Linking the learning process to everyday experience',
+    'We take families and parents as our principal partners',
   ]
 
   return (

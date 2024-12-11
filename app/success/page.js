@@ -56,6 +56,7 @@ const testimonials = [
   },
 ]
 
+
 export default function SuccessStoriesPage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
 
@@ -66,6 +67,111 @@ export default function SuccessStoriesPage() {
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
   }
+
+  // Sample data for milestones and certificates
+  const stories = [
+    {
+      id: 1,
+      type: "certificate",
+      title: "Certificate One",
+      description: "Successfully completed an advanced React course.",
+      image: "/images/certificate.png",
+      date: "2023-12-05",
+    },
+    {
+      id: 2,
+      type: "milestone",
+      title: "Milestone One",
+      description: "Developed and deployed my first full-stack project.",
+      image: "/images/milestone.png",
+      date: "2023-11-20",
+    },
+    {
+      id: 3,
+      type: "certificate",
+      title: "Certificate Two",
+      description: "Earned a certificate for mastering JavaScript.",
+      image: "/images/certificate.png",
+      date: "2023-11-15",
+    },
+    {
+      id: 4,
+      type: "milestone",
+      title: "MileStone Two",
+      description: "Celebrated reaching 1000 active users in my app.",
+      image: "/images/milestone.png",
+      date: "2023-10-30",
+    },
+    {
+      id: 5,
+      type: "certificate",
+      title: "Certificate Two",
+      description: "Earned a certificate for mastering JavaScript.",
+      image: "/images/certificate.png",
+      date: "2023-11-15",
+    },
+    {
+      id: 6,
+      type: "milestone",
+      title: "MileStone Two",
+      description: "Celebrated reaching 1000 active users in my app.",
+      image: "/images/milestone.png",
+      date: "2023-5-18",
+    },
+    {
+      id: 7,
+      type: "certificate",
+      title: "Certificate Two",
+      description: "Earned a certificate for mastering JavaScript.",
+      image: "/images/certificate.png",
+      date: "2023-11-24",
+    },
+    {
+      id: 8,
+      type: "milestone",
+      title: "MileStone Two",
+      description: "Celebrated reaching 1000 active users in my app.",
+      image: "/images/milestone.png",
+      date: "2023-12-30",
+    },
+    {
+      id: 9,
+      type: "certificate",
+      title: "Certificate Two",
+      description: "Earned a certificate for mastering JavaScript.",
+      image: "/images/certificate.png",
+      date: "2023-1-15",
+    },
+    {
+      id: 10,
+      type: "milestone",
+      title: "MileStone Two",
+      description: "Celebrated reaching 1000 active users in my app.",
+      image: "/images/milestone.png",
+      date: "2023-7-3",
+    },
+  ];
+
+  const [filter, setFilter] = useState("all"); // State to track the selected filter
+
+  // Rearrange stories based on filter
+  const rearrangedStories = () => {
+    if (filter === "certificate") {
+      return [
+        ...stories.filter((story) => story.type === "certificate"), // Certificates first
+        ...stories.filter((story) => story.type === "milestone"),   // Milestones after (blurred)
+      ];
+    }
+    if (filter === "milestone") {
+      return [
+        ...stories.filter((story) => story.type === "milestone"),   // Milestones first
+        ...stories.filter((story) => story.type === "certificate"), // Certificates after (blurred)
+      ];
+    }
+    // Default: show all stories sorted by date (latest to oldest)
+    return [...stories].sort((a, b) => new Date(b.date) - new Date(a.date));
+  };
+
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -113,7 +219,7 @@ export default function SuccessStoriesPage() {
       {/* Testimonial Carousel */}
       <section className="bg-[#111827] text-white py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">What Our Alumni Say</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Our Alumni</h2>
           <div className="relative">
             <motion.div
               key={currentTestimonial}
@@ -151,16 +257,131 @@ export default function SuccessStoriesPage() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-[#111827]">Ready to Write Your Success Story?</h2>
-          <p className="text-xl mb-8 text-gray-600">Join our community of achievers and unlock your potential</p>
-          <Button className="bg-[#b18aa7] hover:bg-[#9a7691] text-white text-lg px-8 py-3">
-            Apply Now
-          </Button>
-        </div>
-      </section>
+
+      <div className="success-stories-page">
+
+          <h2 className='cheader'>Our Certificates and Milestones</h2>
+
+      {/* Filter Bar */}
+      <div className="filter-bar">
+        <button
+          className={`filter-btn ${filter === "all" ? "active" : ""}`}
+          onClick={() => setFilter("all")}
+        >
+          All
+        </button>
+        <button
+          className={`filter-btn ${filter === "milestone" ? "active" : ""}`}
+          onClick={() => setFilter("milestone")}
+        >
+          Milestones
+        </button>
+        <button
+          className={`filter-btn ${filter === "certificate" ? "active" : ""}`}
+          onClick={() => setFilter("certificate")}
+        >
+          Certificates
+        </button>
+      </div>
+
+      {/* Stories Grid */}
+      <div className="stories-grid">
+        {rearrangedStories().map((story) => (
+          <div
+            key={story.id}
+            className={`story-box ${
+              filter !== "all" && story.type !== filter ? "blur" : ""
+            }`}
+          >
+            <img src={story.image} alt={story.title} className="story-image" />
+            <h3>{story.title}</h3>
+            <p>{story.description}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Styles */}
+      <style jsx>{`
+        .cheader{
+          margin:50px;
+          margin-top:75px;
+          text-align:center;
+          font-size:44px;
+          font-weight:700;
+          color:#b18aa7;
+        }
+
+        .success-stories-page {
+          padding: 50px;
+          margin-bottom:50px;
+          font-family: Arial, sans-serif;
+        }
+
+        .filter-bar {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 20px;
+        }
+
+        .filter-btn {
+          padding: 10px 20px;
+          margin: 0 10px;
+          border: none;
+          background-color: #f0f0f0;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background-color 0.3s, color 0.3s;
+        }
+
+        .filter-btn.active {
+          background-color: #b18aa7;
+          color: #fff;
+        }
+
+        .stories-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 20px;
+        }
+
+        .story-box {
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          padding: 15px;
+          text-align: left;
+          background-color: #fff;
+          transition: transform 0.3s, filter 0.3s;
+          position: relative;
+          z-index: 1;
+        }
+
+        .story-box.blur {
+          filter: blur(5px);
+          pointer-events: none;
+        }
+
+        .story-image {
+          max-width: 150px;
+          border-radius: 8px;
+          margin-bottom: 15px;
+        }
+
+        h3 {
+          margin: 10px 0;
+          font-size: 20px;
+        }
+
+        p {
+          color: #555;
+          font-size: 16px;
+        }
+      `}</style>
+    </div>
+
+
+
+
     </main>
   )
 }

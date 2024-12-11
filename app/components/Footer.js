@@ -23,7 +23,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
             <h2 className="text-2xl font-bold tracking-tight text-white">Spring of Knowledge Academy</h2>
-            <p className="text-lg italic">"Nurturing Minds, Cultivating Futures"</p>
+            <p className="text-lg italic">"Where Excellence Is A Habit Not A Goal"</p>
             <p className="text-sm opacity-80">
               Dedicated to providing high-quality education and fostering a love for learning in students of all ages.
             </p>
@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-white">Quick Links</h3>
             <ul className="space-y-2">
-              {["Home", "About Us", "Courses", "Admissions", "Events", "Contact"].map((item) => (
+              {["Home", "About Us", "Events", "Success Stories", "Gallery","Departments"].map((item) => (
                 <li key={item} className="flex items-center space-x-2">
                   <ChevronRight className="h-4 w-4 text-[#b18aa7]" />
                   <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-[#b18aa7] hover:text-white transition-colors duration-200">
@@ -46,11 +46,11 @@ export default function Footer() {
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <Phone className="h-5 w-5" />
-                <span>+1 (555) 123-4567</span>
+                <span>+251-96-053-1010</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-5 w-5" />
-                <span>info@springofknowledge.edu</span>
+                <span>ethiospring@gmail.com</span>
               </div>
             </div>
             <div className="flex space-x-4 mt-4">

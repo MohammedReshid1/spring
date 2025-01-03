@@ -23,7 +23,7 @@ export default function Header() {
   return (
     <header className="flex justify-between items-center py-1.5 px-4 bg-white shadow-sm h-18 overflow-visible">
   <div className="logo -my-5">
-    <Image src="/images/Logo.png" alt="Academy Logo" width={150} height={75} className="object-contain" />
+    <Image src="/images/Spring_Logo.png" alt="Academy Logo" width={150} height={75} className="object-contain" />
   </div>
   <nav className="hidden lg:block">
     <ul className="flex space-x-3">
@@ -40,14 +40,14 @@ export default function Header() {
             href={link.href}
             className="text-larg font-medium py-1.5 px-2 relative group border border-transparent"
           >
-            <span className="text-[#111827] group-hover:text-[#b18aa7] transition-colors duration-300">
+            <span className="text-[#111827] group-hover:text-[#18BEBC] transition-colors duration-300">
               {link.text}
             </span>
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#b18aa7] group-hover:w-full transition-all duration-300"></span>
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#18BEBC] group-hover:w-full transition-all duration-300"></span>
             <style jsx>{`
               .group:hover {
                 background-color: #ffffff;
-                border-color: #b18aa7;
+                border-color: #18BEBC;
               }
             `}</style>
           </Link>
@@ -58,7 +58,7 @@ export default function Header() {
             href="/contact"
             className={cn(
               buttonVariants({ variant: "outline", size: "sm" }),
-              "text-sm font-light bg-[#b18aa7] text-white border border-white hover:bg-white hover:text-[#b18aa7] hover:border-[#b18aa7] py-1.5 px-3 transition-colors duration-300"
+              "text-sm font-light bg-[#18BEBC] text-white border border-white hover:bg-white hover:text-[#18BEBC] hover:border-[#18BEBC] py-1.5 px-3 transition-colors duration-300"
             )}
           >
             Contact Us
@@ -95,10 +95,10 @@ export default function Header() {
                 className="text-sm font-light relative group"
                 onClick={closeSheet}
               >
-                <span className="text-black group-hover:text-[#b18aa7] transition-colors duration-300">
+                <span className="text-black group-hover:text-[#18BEBC] transition-colors duration-300">
                   {link.text}
                 </span>
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#b18aa7] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#18BEBC] group-hover:w-full transition-all duration-300"></span>
               </Link>
             </li>
           ))}
@@ -107,7 +107,7 @@ export default function Header() {
               href="/contact" 
               className={cn(
                 buttonVariants({ variant: "outline" }),
-                "text-sm font-light bg-[#b18aa7] text-white hover:bg-[#9a7691] hover:text-white border-[#b18aa7] rounded-full"
+                "text-sm font-light bg-[#18BEBC] text-white hover:bg-[#18BEBC] hover:text-white border-[#18BEBC] rounded-full"
               )}
               onClick={closeSheet}
             >

@@ -8,17 +8,17 @@ export default function Programs() {
     { 
       name: "Kindergarten Program", 
       description: "Where Little Learners Begin Big Adventures!",
-      image: "/images/kindergarten.jpg"
+      image: "/images/SKA-57.jpg"
     },
     { 
       name: "Primary School Program", 
       description: "Building Strong Foundations for Tomorrow's Leaders!",
-      image: "/images/primary.jpg"
+      image: "/images/SKA-48.jpg"
     },
     { 
       name: "High School Program", 
       description: "Empowering Students to Achieve and Excel!.",
-      image: "/images/highschool.jpg"
+      image: "/images/SKA-85.jpg"
     },
   ]
 
@@ -26,7 +26,7 @@ export default function Programs() {
     <section className="py-16 bg-background">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-center">
-          Our <span style={{ color: '#b18aa7' }}>Programs</span>
+          Our <span style={{ color: '#18BEBC' }}>Programs</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, index) => (

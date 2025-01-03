@@ -33,8 +33,8 @@ export default function Footer() {
             <ul className="space-y-2">
               {["Home", "About Us", "Events", "Success Stories", "Gallery","Departments"].map((item) => (
                 <li key={item} className="flex items-center space-x-2">
-                  <ChevronRight className="h-4 w-4 text-[#b18aa7]" />
-                  <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-[#b18aa7] hover:text-white transition-colors duration-200">
+                  <ChevronRight className="h-4 w-4 text-[#18BEBC]" />
+                  <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-[#18BEBC] hover:text-white transition-colors duration-200">
                     {item}
                   </Link>
                 </li>
@@ -59,7 +59,7 @@ export default function Footer() {
                 { href: "https://facebook.com", icon: Facebook, label: "Facebook" },
                 { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
               ].map((social) => (
-                <Link key={social.label} href={social.href} className="text-[#b18aa7] hover:text-white transition-colors duration-200">
+                <Link key={social.label} href={social.href} className="text-[#18BEBC] hover:text-white transition-colors duration-200">
                   <social.icon className="h-6 w-6" />
                   <span className="sr-only">{social.label}</span>
                 </Link>
@@ -75,13 +75,13 @@ export default function Footer() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2 text-gray-700 bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-[#b18aa7]"
+                className="w-full px-3 py-2 text-gray-700 bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-[#18BEBC]"
                 required
               />
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`w-full px-4 py-2 text-white bg-[#b18aa7] rounded-md transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#b18aa7] focus:ring-opacity-50 ${
+                className={`w-full px-4 py-2 text-white bg-[#18BEBC] rounded-md transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#18BEBC] focus:ring-opacity-50 ${
                   isLoading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >

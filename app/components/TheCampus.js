@@ -13,8 +13,8 @@ export default function TheCampus() {
 
   const images = [
     { src: "/images/campus2.jpg", alt: "Branches" },
-    { src: "/images/library.jpg", alt: "Activities" },
-    { src: "/images/student_life.jpg", alt: "Facilities" },
+    { src: "/images/SKA-84.jpg", alt: "Activities" },
+    { src: "/images/SKA-26.jpg", alt: "Facilities" },
   ]
 
   return (

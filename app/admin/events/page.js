@@ -43,7 +43,7 @@
 
 //   return (
 //     <main className="container mx-auto px-4 py-8">
-//       <h1 className="text-4xl font-bold mb-8 text-center text-[#b18aa7]">Event Management</h1>
+//       <h1 className="text-4xl font-bold mb-8 text-center text-[#18BEBC]">Event Management</h1>
 
 //       <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
 //         <TabsList>
@@ -74,7 +74,7 @@
 //                   value={eventForm.name}
 //                   onChange={handleInputChange}
 //                   placeholder="e.g. Conference for Architects"
-//                   className="border-[#b18aa7] focus:ring-[#b18aa7] focus:border-[#b18aa7]"
+//                   className="border-[#18BEBC] focus:ring-[#18BEBC] focus:border-[#18BEBC]"
 //                 />
 //               </div>
 
@@ -87,7 +87,7 @@
 //                     type="datetime-local"
 //                     value={eventForm.date}
 //                     onChange={handleInputChange}
-//                     className="border-[#b18aa7] focus:ring-[#b18aa7] focus:border-[#b18aa7]"
+//                     className="border-[#18BEBC] focus:ring-[#18BEBC] focus:border-[#18BEBC]"
 //                   />
 //                 </div>
 //                 <div>
@@ -98,7 +98,7 @@
 //                     type="datetime-local"
 //                     value={eventForm.endDate}
 //                     onChange={handleInputChange}
-//                     className="border-[#b18aa7] focus:ring-[#b18aa7] focus:border-[#b18aa7]"
+//                     className="border-[#18BEBC] focus:ring-[#18BEBC] focus:border-[#18BEBC]"
 //                   />
 //                 </div>
 //               </div>
@@ -106,7 +106,7 @@
 //               <div>
 //                 <Label htmlFor="timezone">Timezone</Label>
 //                 <Select name="timezone" onValueChange={(value) => handleSelectChange('timezone', value)}>
-//                   <SelectTrigger className="border-[#b18aa7] focus:ring-[#b18aa7] focus:border-[#b18aa7]">
+//                   <SelectTrigger className="border-[#18BEBC] focus:ring-[#18BEBC] focus:border-[#18BEBC]">
 //                     <SelectValue placeholder="Select timezone" />
 //                   </SelectTrigger>
 //                   <SelectContent>
@@ -124,14 +124,14 @@
 //                   value={eventForm.responsible}
 //                   onChange={handleInputChange}
 //                   placeholder="Email of responsible person"
-//                   className="border-[#b18aa7] focus:ring-[#b18aa7] focus:border-[#b18aa7]"
+//                   className="border-[#18BEBC] focus:ring-[#18BEBC] focus:border-[#18BEBC]"
 //                 />
 //               </div>
 
 //               <div>
 //                 <Label htmlFor="language">Language</Label>
 //                 <Select name="language" onValueChange={(value) => handleSelectChange('language', value)}>
-//                   <SelectTrigger className="border-[#b18aa7] focus:ring-[#b18aa7] focus:border-[#b18aa7]">
+//                   <SelectTrigger className="border-[#18BEBC] focus:ring-[#18BEBC] focus:border-[#18BEBC]">
 //                     <SelectValue placeholder="Select language" />
 //                   </SelectTrigger>
 //                   <SelectContent>
@@ -150,7 +150,7 @@
 //                   value={eventForm.venue}
 //                   onChange={handleInputChange}
 //                   placeholder="Event venue"
-//                   className="border-[#b18aa7] focus:ring-[#b18aa7] focus:border-[#b18aa7]"
+//                   className="border-[#18BEBC] focus:ring-[#18BEBC] focus:border-[#18BEBC]"
 //                 />
 //               </div>
 
@@ -163,11 +163,11 @@
 //                   value={eventForm.limitRegistrations}
 //                   onChange={handleInputChange}
 //                   placeholder="Maximum number of registrations"
-//                   className="border-[#b18aa7] focus:ring-[#b18aa7] focus:border-[#b18aa7]"
+//                   className="border-[#18BEBC] focus:ring-[#18BEBC] focus:border-[#18BEBC]"
 //                 />
 //               </div>
 
-//               <Button type="submit" className="bg-[#b18aa7] hover:bg-[#9a7691] text-white">
+//               <Button type="submit" className="bg-[#18BEBC] hover:bg-[#9a7691] text-white">
 //                 Create Event
 //               </Button>
 //             </form>

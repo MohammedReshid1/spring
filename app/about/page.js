@@ -90,7 +90,7 @@ export default function About() {
           />
         </div>
         <div className="relative z-10 bg-white bg-opacity-80 p-8 rounded-lg">
-          <h1 className="text-4xl font-bold mb-4 text-[#b18aa7]">About Spring of Knowledge Academy</h1>
+          <h1 className="text-4xl font-bold mb-4 text-[#18BEBC]">About Spring of Knowledge Academy</h1>
           <p className="text-xl text-[#111827] max-w-2xl mx-auto">
             Nurturing minds, inspiring futures, and cultivating a lifelong love for learning.
           </p>
@@ -105,7 +105,7 @@ export default function About() {
       >
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="md:w-1/2  ml-4 md:ml-[10%]">
-            <h2 className="text-3xl font-semibold mb-4 text-[#b18aa7]">Our Mission</h2>
+            <h2 className="text-3xl font-semibold mb-4 text-[#18BEBC]">Our Mission</h2>
             <p className="text-lg text-[#111827]">
             Assuring the access to quality care & education for all children receiving our service
             </p>
@@ -132,7 +132,7 @@ export default function About() {
 
 
 <section className="mb-16">
- <h2 className="text-3xl font-semibold mb-8 text-center text-[#b18aa7]">Our Core Values</h2>
+ <h2 className="text-3xl font-semibold mb-8 text-center text-[#18BEBC]">Our Core Values</h2>
   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center">
     <div className="space-y-6">
       {values.slice(0, 3).map((value, index) => (
@@ -142,10 +142,10 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 * index }}
         >
-          <Card className="h-full transition-all duration-300 hover:shadow-lg hover:bg-[#111827] hover:text-[#b18aa7] group">
+          <Card className="h-full transition-all duration-300 hover:shadow-lg hover:bg-[#111827] hover:text-[#18BEBC] group">
             <CardContent className="flex flex-col items-center p-6 h-64 justify-between">
               <div className="flex flex-col items-center mt-5 mb-auto">
-                <div className="text-[#b18aa7] group-hover:text-white mb-4">
+                <div className="text-[#18BEBC] group-hover:text-white mb-4">
                   {value.icon}
                 </div>
                 <CardTitle className="mb-4 mt-5">{value.title}</CardTitle>
@@ -166,10 +166,10 @@ export default function About() {
           transition={{ duration: 0.5, delay: 0.1 * index }}
         >
           
-          <Card className="h-full transition-all duration-300 hover:shadow-lg hover:bg-[#111827] hover:text-[#b18aa7] group">
+          <Card className="h-full transition-all duration-300 hover:shadow-lg hover:bg-[#111827] hover:text-[#18BEBC] group">
             <CardContent className="flex flex-col items-center p-6 h-64 justify-between">
               <div className="flex flex-col items-center mt-5 mb-auto">
-                <div className="text-[#b18aa7] group-hover:text-white mb-4">
+                <div className="text-[#18BEBC] group-hover:text-white mb-4">
                   {value.icon}
                 </div>
                 <CardTitle className="mb-4 mt-5">{value.title}</CardTitle>
@@ -187,7 +187,7 @@ export default function About() {
 
 
       <section className="mb-16">
-        <h2 className="text-3xl font-semibold mb-8 text-center text-[#b18aa7]">Meet Our Department</h2>
+        <h2 className="text-3xl font-semibold mb-8 text-center text-[#18BEBC]">Meet Our Department</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {founders.map((founder, index) => (
             <motion.div
@@ -215,7 +215,7 @@ export default function About() {
                 <CardContent className="p-6 bg-white">
                   <div className={`transition-colors duration-300 ${hoveredFounder === index ? 'bg-[#111827] text-white' : ''} p-4 rounded-lg`}>
                     <h3 className="text-xl font-semibold mb-1">{founder.name}</h3>
-                    <p className={`text-sm mb-2 ${hoveredFounder === index ? 'text-[#b18aa7]' : 'text-gray-600'}`}>{founder.role}</p>
+                    <p className={`text-sm mb-2 ${hoveredFounder === index ? 'text-[#18BEBC]' : 'text-gray-600'}`}>{founder.role}</p>
                     <p className="text-sm">{founder.description}</p>
                   </div>
                 </CardContent>

@@ -22,7 +22,7 @@ export default function DrivenByExcellence() {
         <div className="flex flex-col items-center lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-16">
           <div className="w-full lg:w-1/2 max-w-2xl">
             <Image 
-              src="/images/driven_by_excellence.jpg" 
+              src="/images/SKA-75.jpg" 
               alt="Excellence" 
               width={800} 
               height={600} 
@@ -41,7 +41,7 @@ export default function DrivenByExcellence() {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
                     className="absolute left-0"
-                    style={{ color: '#b18aa7' }}
+                    style={{ color: '#18BEBC' }}
                   >
                     {words[currentWord]}
                   </motion.span>

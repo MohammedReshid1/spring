@@ -176,7 +176,7 @@ export default function SuccessStoriesPage() {
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-[#b18aa7] text-white py-20">
+      <section className="bg-[#18BEBC] text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Success Stories</h1>
           <p className="text-xl mb-8">Discover how our graduates are making an impact in the tech world</p>
@@ -206,7 +206,7 @@ export default function SuccessStoriesPage() {
                   className="w-full h-48 object-cover"
                 />
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 text-[#b18aa7]">{story.name}</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-[#18BEBC]">{story.name}</h3>
                   <p className="text-sm text-gray-600 mb-4">{story.title}</p>
                   <p className="text-[#111827]">{story.story}</p>
                 </CardContent>
@@ -232,7 +232,7 @@ export default function SuccessStoriesPage() {
                 <AvatarImage src={testimonials[currentTestimonial].avatar} alt={testimonials[currentTestimonial].name} />
                 <AvatarFallback>{testimonials[currentTestimonial].name.charAt(0)}</AvatarFallback>
               </Avatar>
-              <Quote className="w-12 h-12 text-[#b18aa7] mb-4" />
+              <Quote className="w-12 h-12 text-[#18BEBC] mb-4" />
               <p className="text-xl mb-6 max-w-2xl">{testimonials[currentTestimonial].content}</p>
               <p className="font-semibold">{testimonials[currentTestimonial].name}</p>
               <p className="text-sm text-gray-400">{testimonials[currentTestimonial].role}</p>
@@ -308,7 +308,7 @@ export default function SuccessStoriesPage() {
           text-align:center;
           font-size:44px;
           font-weight:700;
-          color:#b18aa7;
+          color:#18BEBC;
         }
 
         .success-stories-page {
@@ -335,7 +335,7 @@ export default function SuccessStoriesPage() {
         }
 
         .filter-btn.active {
-          background-color: #b18aa7;
+          background-color: #18BEBC;
           color: #fff;
         }
 

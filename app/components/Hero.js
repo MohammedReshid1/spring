@@ -20,7 +20,7 @@ export default function Hero() {
     <section className="relative h-screen overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/images/campus.jpg"
+        src="/images/SKA-1.jpg"
         alt="Spring of Knowledge Academy Campus"
         layout="fill"
         objectFit="cover"

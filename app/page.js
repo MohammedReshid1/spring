@@ -86,6 +86,7 @@ import WhatMakesUsDifferent from './components/WhatMakesUsDifferent'
 import Testimonials from './components/Testimonials' 
 import Programs from './components/Programs' 
 import TheCampus from './components/TheCampus'
+import NewsSection from './components/NewsSection'
 
 export default function Home() { 
   return ( <> 
@@ -93,7 +94,8 @@ export default function Home() {
     <DrivenByExcellence /> 
     <Stats /> 
     <WhatMakesUsDifferent /> 
-    <Testimonials /> 
+    <Testimonials />
+    <NewsSection/>
     <Programs /> 
     <TheCampus /> 
     <HomeEnroll /> 

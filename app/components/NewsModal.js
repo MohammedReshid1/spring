@@ -3,12 +3,49 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogFooter,
 } from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
 import Image from 'next/image'
-import { CalendarIcon } from 'lucide-react'
+import { CalendarIcon, Share2, Linkedin, Twitter, Link } from 'lucide-react'
 
 export default function NewsModal({ isOpen, onClose, news }) {
   if (!news) return null
+
+  const handleShare = async (type) => {
+    const url = window.location.href
+    const title = news.title
+
+    switch (type) {
+      case 'share':
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: title,
+              text: news.excerpt,
+              url: url,
+            })
+          } catch (err) {
+            console.error('Error sharing:', err)
+          }
+        }
+        break
+      case 'linkedin':
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank')
+        break
+      case 'twitter':
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank')
+        break
+      case 'copy':
+        try {
+          await navigator.clipboard.writeText(url)
+          alert('Link copied to clipboard!')
+        } catch (err) {
+          console.error('Error copying to clipboard:', err)
+        }
+        break
+    }
+  }
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -43,6 +80,39 @@ export default function NewsModal({ isOpen, onClose, news }) {
             </p>
           </div>
         </div>
+        <DialogFooter className="mt-6">
+          <div className="flex gap-2 w-full justify-center">
+            <Button
+              variant="secondary"
+              className="bg-[#18BEBC] hover:bg-[#4f8e90] text-white"
+              onClick={() => handleShare('share')}
+            >
+              <Share2 className="w-4 h-4 mr-2" />
+              Share
+            </Button>
+            <Button
+              variant="secondary"
+              className="bg-[#5f9ea0] hover:bg-[#4f8e90] text-white"
+              onClick={() => handleShare('linkedin')}
+            >
+              <Linkedin className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="secondary"
+              className="bg-[#5f9ea0] hover:bg-[#4f8e90] text-white"
+              onClick={() => handleShare('twitter')}
+            >
+              <Twitter className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="secondary"
+              className="bg-[#5f9ea0] hover:bg-[#4f8e90] text-white"
+              onClick={() => handleShare('copy')}
+            >
+              <Link className="w-4 h-4" />
+            </Button>
+          </div>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   )

@@ -23,7 +23,7 @@ export default function Programs() {
   ]
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-16 bg-background m-10">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-center">
           Our <span style={{ color: '#18BEBC' }}>Programs</span>

@@ -3,10 +3,12 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Search } from 'lucide-react'
+import { Search, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
 
 // This would typically come from your backend
 const dummyImages = [
@@ -23,6 +25,8 @@ export default function GalleryPage() {
   const [filteredImages, setFilteredImages] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('All')
+  const [selectedImage, setSelectedImage] = useState(null)
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   // Simulating data fetching from backend
   useEffect(() => {
@@ -40,6 +44,23 @@ export default function GalleryPage() {
   }, [searchTerm, categoryFilter, images])
 
   const categories = ['All', ...new Set(images.map(img => img.category))]
+
+  const handleImageClick = (image) => {
+    setSelectedImage(image)
+    setIsDialogOpen(true)
+  }
+
+  const handlePrevImage = () => {
+    const currentIndex = filteredImages.findIndex(img => img.id === selectedImage.id)
+    const prevIndex = (currentIndex - 1 + filteredImages.length) % filteredImages.length
+    setSelectedImage(filteredImages[prevIndex])
+  }
+
+  const handleNextImage = () => {
+    const currentIndex = filteredImages.findIndex(img => img.id === selectedImage.id)
+    const nextIndex = (currentIndex + 1) % filteredImages.length
+    setSelectedImage(filteredImages[nextIndex])
+  }
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -77,7 +98,10 @@ export default function GalleryPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
           >
-            <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <Card 
+              className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer"
+              onClick={() => handleImageClick(image)}
+            >
               <CardContent className="p-0">
                 <Image
                   src={image.src}
@@ -99,6 +123,37 @@ export default function GalleryPage() {
       {filteredImages.length === 0 && (
         <p className="text-center text-lg text-[#111827] mt-8">No images found. Try adjusting your search or filter.</p>
       )}
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="max-w-2xl w-11/12 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2 dialog-overlay">
+          <DialogTitle className="sr-only">Image Preview</DialogTitle>
+          {selectedImage && (
+            <div className="flex flex-col items-center relative">
+              <div className="w-full h-[60vh] relative">
+                <Image
+                  src={selectedImage.src}
+                  alt={selectedImage.alt}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-semibold mt-4 text-[#18BEBC]">{selectedImage.alt}</h3>
+              <p className="text-sm text-[#111827]">{selectedImage.category}</p>
+              <div className="absolute left-0 top-1/2 transform -translate-y-1/2">
+                <Button variant="outline" size="icon" onClick={handlePrevImage}>
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+              </div>
+              <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
+                <Button variant="outline" size="icon" onClick={handleNextImage}>
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </main>
   )
 }
+

@@ -31,11 +31,18 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-white">Quick Links</h3>
             <ul className="space-y-2">
-              {["Home", "About Us", "Events", "Success Stories", "Gallery","Departments"].map((item) => (
-                <li key={item} className="flex items-center space-x-2">
+              {[
+                { href: "/", text: "Home" },
+                { href: "/about", text: "About Us" },
+                { href: "/upcomingEvents", text: "Events" },
+                { href: "/success", text: "Success Stories" },
+                { href: "/gallery", text: "Gallery" },
+                { href: "/departments", text: "Departments" },
+              ].map((item) => (
+                <li key={item.href} className="flex items-center space-x-2">
                   <ChevronRight className="h-4 w-4 text-[#1C74BB]" />
-                  <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-[#1C74BB] hover:text-white transition-colors duration-200">
-                    {item}
+                  <Link href={item.href} className="text-[#1C74BB] hover:text-white transition-colors duration-200">
+                    {item.text}
                   </Link>
                 </li>
               ))}

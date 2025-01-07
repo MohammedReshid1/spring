@@ -10,7 +10,7 @@ export default function HomeEnroll() {
       <div className="container mx-auto text-center relative z-10 h-full flex flex-col justify-center items-center">
         <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 [text-wrap:balance] mx-auto max-w-4xl tracking-tight">
           <span className="block mb-2">Enroll Now for</span>
-          <span className="block mb-2">Fall 2024</span>
+          <span className="block mb-2">Fall 2025</span>
         </h2>
         <p className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
           Join our community of learners and start your journey towards excellence.

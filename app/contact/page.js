@@ -35,7 +35,7 @@ const ContactPage = () => {
     };
   
     try {
-      const response = await fetch("http://57.129.71.13:3000/send_email", {
+      const response = await fetch("http://57.129.71.13:8001/send_email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -7,61 +7,27 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { TimerReset, BrainCircuit, Handshake, ScanEyeIcon, BriefcaseBusiness, SunDim } from 'lucide-react'
 
 export default function About() {
-  const [hoveredFounder, setHoveredFounder] = useState(null)
 
-  const founders = [
-    {
-      name: "Biruk Tilahun",
-      role: "General Manager",
-      image: "/images/lady.png?height=400&width=400",
-      description: "Dr. Chen is an education visionary with over 20 years of experience in curriculum development and educational technology."
-    },
-    {
-      name: "Zemed Derib",
-      role: "Primary School Principal",
-      image: "/images/lady.png?height=400&width=400",
-      description: "Prof. Johnson is a renowned expert in personalized learning and has published numerous papers on adaptive educational systems."
-    },
-    {
-      name: "Muhdin Muzeyin",
-      role: "Secondary School Principal",
-      image: "/images/lady.png?height=400&width=400",
-      description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
-    },
-    {
-      name: "Zelalem Biru",
-      role: "Assessment & Quality Assurance Head",
-      image: "/images/lady.png?height=400&width=400",
-      description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
-    },
-    {
-      name: "Yewubdar Belay",
-      role: "Kindergarten Principal",
-      image: "/images/lady.png?height=400&width=400",
-      description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
-    },
-
-    {
-      name: "Ajaiba Heyredin",
-      role: "Kindergarten Principal",
-      image: "/images/lady.png?height=400&width=400",
-      description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
-    },
-
-    {
-      name: "Mohammed Abdela",
-      role: "Legal Advisor",
-      image: "/images/lady.png?height=400&width=400",
-      description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
-    },
-
-    {
-      name: "Jemal Kedir",
-      role: "Finance & Admin Head",
-      image: "/images/lady.png?height=400&width=400",
-      description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
-    }
-  ]
+  // const founders = [
+  //   {
+  //     name: "Biruk Tilahun",
+  //     role: "General Manager",
+  //     image: "/images/lady.png?height=400&width=400",
+  //     description: "Dr. Chen is an education visionary with over 20 years of experience in curriculum development and educational technology."
+  //   },
+  //   {
+  //     name: "Zemed Derib",
+  //     role: "Primary School Principal",
+  //     image: "/images/lady.png?height=400&width=400",
+  //     description: "Prof. Johnson is a renowned expert in personalized learning and has published numerous papers on adaptive educational systems."
+  //   },
+  //   {
+  //     name: "Muhdin Muzeyin",
+  //     role: "Secondary School Principal",
+  //     image: "/images/lady.png?height=400&width=400",
+  //     description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
+  //   },
+  // ]
 
   const values = [
     { icon: <BrainCircuit size={24} />, title: "Excellence", description: "We mean that every member of the school community is proud of his/her personal achievement, produces work of the highest quality, sets high standards and personal goals for improvement, and makes best use of talents, time and resources" },
@@ -107,12 +73,11 @@ export default function About() {
           <div className="md:w-1/2  ml-4 md:ml-[10%]">
             <h2 className="text-3xl font-semibold mb-4 text-[#1C74BB]">Our Mission</h2>
             <p className="text-lg text-[#111827]">
-            Assuring the access to quality care & education for all children receiving our service
-            </p>
+            Our mission is to ensure that every child, regardless of their background or circumstances, has access to high-quality care and education. We strive to create opportunities that nurture their growth, ignite their potential, and empower them to build a brighter future. By fostering inclusive environments and championing equity, we aim to break down barriers and create a world where all children can thrive and achieve their dreams.            </p>
           </div>
           <div className="md:w-1/9 max-w-md mx-auto">
             <Image
-              src="/images/mission.png?height=300&width=300"
+              src="/images/SPRING_LOGO.png?height=300&width=300"
               alt="Spring of Knowledge Academy Logo"
               width={200}
               height={200}
@@ -186,7 +151,7 @@ export default function About() {
 
 
 
-      <section className="mb-16">
+      {/* <section className="mb-16">
         <h2 className="text-3xl font-semibold mb-8 text-center text-[#1C74BB]">Meet Our Department</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {founders.map((founder, index) => (
@@ -223,7 +188,7 @@ export default function About() {
             </motion.div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       <motion.section 
         className="text-center"
@@ -286,10 +251,9 @@ export default function About() {
 
 
 
-    <section className="py-16 px-6 m-8 bg-gradient-to-b to-purple-50 via-white from-gray-100 rounded-lg">
+    {/* <section className="py-16 px-6 m-8 bg-gradient-to-b to-purple-50 via-white from-gray-100 rounded-lg">
 
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center ">
-        {/* Left Text Section */}
         <div className="relative group">
           <div className="bg-white shadow-lg p-4 rounded-lg">
             <Image
@@ -305,7 +269,6 @@ export default function About() {
           </p>
         </div>
 
-        {/* Right Chart Section */}
         <div className="space-y-6 text-justify">
           <h2 className="text-4xl text-right font-bold text-gray-800">Organizational structure</h2>
           <p className="text-sm text-gray-600 leading-relaxed">
@@ -327,7 +290,7 @@ export default function About() {
           </p>
         </div>
       </div>
-      </section>
+      </section> */}
 
 
       </motion.section>

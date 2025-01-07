@@ -3,7 +3,63 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronDown, ChevronUp } from 'lucide-react';
+
+
+const founders = [
+  {
+    name: "Biruk Tilahun",
+    role: "General Manager",
+    image: "/images/lady.png?height=400&width=400",
+    description: "Dr. Chen is an education visionary with over 20 years of experience in curriculum development and educational technology."
+  },
+  {
+    name: "Zemed Derib",
+    role: "Primary School Principal",
+    image: "/images/lady.png?height=400&width=400",
+    description: "Prof. Johnson is a renowned expert in personalized learning and has published numerous papers on adaptive educational systems."
+  },
+  {
+    name: "Muhdin Muzeyin",
+    role: "Secondary School Principal",
+    image: "/images/lady.png?height=400&width=400",
+    description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
+  },
+  {
+    name: "Zelalem Biru",
+    role: "Assessment & Quality Assurance Head",
+    image: "/images/lady.png?height=400&width=400",
+    description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
+  },
+  {
+    name: "Yewubdar Belay",
+    role: "Kindergarten Principal",
+    image: "/images/lady.png?height=400&width=400",
+    description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
+  },
+
+  {
+    name: "Ajaiba Heyredin",
+    role: "Kindergarten Principal",
+    image: "/images/lady.png?height=400&width=400",
+    description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
+  },
+
+  {
+    name: "Mohammed Abdela",
+    role: "Legal Advisor",
+    image: "/images/lady.png?height=400&width=400",
+    description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
+  },
+
+  {
+    name: "Jemal Kedir",
+    role: "Finance & Admin Head",
+    image: "/images/lady.png?height=400&width=400",
+    description: "Sarah brings her expertise in EdTech and user experience design to create engaging and effective learning platforms."
+  }
+]
 
 const departments = [
   {
@@ -45,8 +101,10 @@ const departments = [
 ];
 
 
+
 export default function Departments() {
   const [selectedDept, setSelectedDept] = useState(null);
+  const [hoveredFounder, setHoveredFounder] = useState(null)
 
   const handleCardClick = (index) => {
     setSelectedDept(selectedDept === index ? null : index);
@@ -127,6 +185,51 @@ export default function Departments() {
           ))}
         </motion.div>
       </section>
+       <section className="mb-16">
+        <h2 className="text-3xl font-semibold mb-8 text-center text-[#1C74BB]">Meet Our Department Heads</h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {founders.map((founder, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+              className="max-w-sm mx-auto w-full"
+            >
+              <Card 
+                className="h-full transition-all duration-300 hover:shadow-lg overflow-hidden"
+                onMouseEnter={() => setHoveredFounder(index)}
+                onMouseLeave={() => setHoveredFounder(null)}
+              >
+              <div className="relative flex h-[125px] w-[100%] justify-center items-end">
+                <Image
+                  src={founder.image}
+                  alt={founder.name}
+                  width={100}
+                  height={100}
+                  className="transition-transform duration-300 hover:scale-110 object-cover"
+                />
+              </div>
+
+                <CardContent className="p-6 bg-white">
+                  <div className={`transition-colors duration-300 ${hoveredFounder === index ? 'bg-[#111827] text-white' : ''} p-4 rounded-lg`}>
+                    <h3 className="text-xl font-semibold mb-1">{founder.name}</h3>
+                    <p className={`text-sm mb-2 ${hoveredFounder === index ? 'text-[#1C74BB]' : 'text-gray-600'}`}>{founder.role}</p>
+                    <p className="text-sm">{founder.description}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section> 
+
+<motion.section 
+        className="text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      />
     </div>
   );
 }

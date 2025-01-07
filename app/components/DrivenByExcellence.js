@@ -41,7 +41,7 @@ export default function DrivenByExcellence() {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
                     className="absolute left-0"
-                    style={{ color: '#18BEBC' }}
+                    style={{ color: '#1C74BB' }}
                   >
                     {words[currentWord]}
                   </motion.span>

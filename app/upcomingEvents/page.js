@@ -45,7 +45,7 @@ const EventIcon = () => (
     fill="none"
     className="mx-auto mb-4"
   >
-    <rect x="40" y="40" width="120" height="120" rx="8" fill="#18BEBC" />
+    <rect x="40" y="40" width="120" height="120" rx="8" fill="#1C74BB" />
     <path
       d="M70 70H130M70 100H130M70 130H110"
       stroke="white"
@@ -109,7 +109,7 @@ export default function EventsPage() {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-center text-[#18BEBC]">Events</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center text-[#1C74BB]">Events</h1>
       
       <div className="flex flex-col md:flex-row justify-between items-center mb-8">
         <div className="relative w-full md:w-1/3 mb-4 md:mb-0">
@@ -118,7 +118,7 @@ export default function EventsPage() {
             placeholder="Search events..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 border-[#18BEBC] focus:ring-[#18BEBC] focus:border-[#18BEBC]"
+            className="pl-10 border-[#1C74BB] focus:ring-[#1C74BB] focus:border-[#1C74BB]"
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
         </div>
@@ -149,7 +149,7 @@ export default function EventsPage() {
                 className="w-full h-48 object-cover rounded-t-lg"
               />
               <CardContent className="p-6">
-                <CardTitle className="mb-2 text-[#18BEBC]">{event.title}</CardTitle>
+                <CardTitle className="mb-2 text-[#1C74BB]">{event.title}</CardTitle>
                 <p className="text-sm text-gray-600 mb-4">{event.description}</p>
                 <div className="flex items-center text-sm text-[#111827]">
                   <Calendar size={16} className="mr-2" />
@@ -164,7 +164,7 @@ export default function EventsPage() {
 
       {/* <div className="text-center">
         <EventIcon />
-        <Button className="bg-[#18BEBC] hover:bg-[#9a7691] text-white">
+        <Button className="bg-[#1C74BB] hover:bg-[#9a7691] text-white">
           Create an Event
         </Button>
       </div> */}

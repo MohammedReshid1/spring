@@ -30,7 +30,7 @@ export default function NewsSection() {
   return (
     <div className="container mx-auto px-4">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold mb-4 mt-10">Latest <span style={{ color: '#18BEBC' }}>News</span></h1>
+        <h1 className="text-4xl font-bold mb-4 mt-10">Latest <span style={{ color: '#1C74BB' }}>News</span></h1>
         <p className="text-xl text-muted-foreground">
           Stay updated with our latest news and updates
         </p>

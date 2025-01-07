@@ -40,14 +40,14 @@ export default function Header() {
             href={link.href}
             className="text-larg font-medium py-1.5 px-2 relative group border border-transparent"
           >
-            <span className="text-[#111827] group-hover:text-[#18BEBC] transition-colors duration-300">
+            <span className="text-[#111827] group-hover:text-[#1C74BB] transition-colors duration-300">
               {link.text}
             </span>
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#18BEBC] group-hover:w-full transition-all duration-300"></span>
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1C74BB] group-hover:w-full transition-all duration-300"></span>
             <style jsx>{`
               .group:hover {
                 background-color: #ffffff;
-                border-color: #18BEBC;
+                border-color: #1C74BB;
               }
             `}</style>
           </Link>
@@ -58,7 +58,7 @@ export default function Header() {
             href="/contact"
             className={cn(
               buttonVariants({ variant: "outline", size: "sm" }),
-              "text-sm font-light bg-[#18BEBC] text-white border border-white hover:bg-white hover:text-[#18BEBC] hover:border-[#18BEBC] py-1.5 px-3 transition-colors duration-300"
+              "text-sm font-light bg-[#1C74BB] text-white border border-white hover:bg-white hover:text-[#1C74BB] hover:border-[#1C74BB] py-1.5 px-3 transition-colors duration-300"
             )}
           >
             Contact Us
@@ -95,10 +95,10 @@ export default function Header() {
                 className="text-sm font-light relative group"
                 onClick={closeSheet}
               >
-                <span className="text-black group-hover:text-[#18BEBC] transition-colors duration-300">
+                <span className="text-black group-hover:text-[#1C74BB] transition-colors duration-300">
                   {link.text}
                 </span>
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#18BEBC] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1C74BB] group-hover:w-full transition-all duration-300"></span>
               </Link>
             </li>
           ))}
@@ -107,7 +107,7 @@ export default function Header() {
               href="/contact" 
               className={cn(
                 buttonVariants({ variant: "outline" }),
-                "text-sm font-light bg-[#18BEBC] text-white hover:bg-[#18BEBC] hover:text-white border-[#18BEBC] rounded-full"
+                "text-sm font-light bg-[#1C74BB] text-white hover:bg-[#1C74BB] hover:text-white border-[#1C74BB] rounded-full"
               )}
               onClick={closeSheet}
             >

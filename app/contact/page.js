@@ -121,7 +121,7 @@ const ContactPage = () => {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full bg-[#18BEBC] hover:bg-[#9a7691]">
+                <Button type="submit" className="w-full bg-[#1C74BB] hover:bg-[#9a7691]">
                   Send Message
                 </Button>
               </form>
@@ -148,19 +148,19 @@ const ContactPage = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-2">
-                  <MapPin className="text-[#18BEBC]" />
+                  <MapPin className="text-[#1C74BB]" />
                   <span>Spring of knowledge academy | Jemo Campus</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Phone className="text-[#18BEBC]" />
+                  <Phone className="text-[#1C74BB]" />
                   <span>+251-96-053-1010</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Mail className="text-[#18BEBC]" />
+                  <Mail className="text-[#1C74BB]" />
                   <span>ethiospring@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Clock className="text-[#18BEBC]" />
+                  <Clock className="text-[#1C74BB]" />
                   <span>Monday - Friday: 8:00 AM - 5:00 PM</span>
                 </div>
               </CardContent>

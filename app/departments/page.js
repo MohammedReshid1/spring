@@ -55,7 +55,7 @@ export default function Departments() {
   return (
     <div className="bg-background text-foreground min-h-screen">
       <section className="flex items-center justify-center min-h-10vh bg-background">
-        <h1 className="text-5xl font-bold text-[#18BEBC] text-center">Our Departments</h1>
+        <h1 className="text-5xl font-bold text-[#1C74BB] text-center">Our Departments</h1>
       </section>
 
 
@@ -103,7 +103,7 @@ export default function Departments() {
                         e.stopPropagation();
                         setSelectedDept(null);
                       }}
-                      className="flex items-center justify-center w-full py-2 px-4 bg-[#001740] text-white rounded hover:bg-[#18BEBC] transition-colors"
+                      className="flex items-center justify-center w-full py-2 px-4 bg-[#001740] text-white rounded hover:bg-[#1C74BB] transition-colors"
                     >
                       <ChevronUp className="mr-2" size={16} />
                       Minimize

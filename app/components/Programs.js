@@ -26,7 +26,7 @@ export default function Programs() {
     <section className="py-16 bg-background m-10">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-center">
-          Our <span style={{ color: '#18BEBC' }}>Programs</span>
+          Our <span style={{ color: '#1C74BB' }}>Programs</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, index) => (

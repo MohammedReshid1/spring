@@ -64,7 +64,7 @@ export default function GalleryPage() {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-center text-[#18BEBC]">Gallery</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center text-[#1C74BB]">Gallery</h1>
       
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
         <div className="relative w-full md:w-1/3">
@@ -73,13 +73,13 @@ export default function GalleryPage() {
             placeholder="Search images..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 border-[#18BEBC] focus:ring-[#18BEBC] focus:border-[#18BEBC]"
+            className="pl-10 border-[#1C74BB] focus:ring-[#1C74BB] focus:border-[#1C74BB]"
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
         </div>
         
         <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-          <SelectTrigger className="w-full md:w-[180px] border-[#18BEBC] focus:ring-[#18BEBC] focus:border-[#18BEBC]">
+          <SelectTrigger className="w-full md:w-[180px] border-[#1C74BB] focus:ring-[#1C74BB] focus:border-[#1C74BB]">
             <SelectValue placeholder="Select category" />
           </SelectTrigger>
           <SelectContent>
@@ -111,7 +111,7 @@ export default function GalleryPage() {
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold text-[#18BEBC]">{image.alt}</h3>
+                  <h3 className="text-lg font-semibold text-[#1C74BB]">{image.alt}</h3>
                   <p className="text-sm text-[#111827]">{image.category}</p>
                 </div>
               </CardContent>
@@ -137,7 +137,7 @@ export default function GalleryPage() {
                   className="object-contain"
                 />
               </div>
-              <h3 className="text-xl font-semibold mt-4 text-[#18BEBC]">{selectedImage.alt}</h3>
+              <h3 className="text-xl font-semibold mt-4 text-[#1C74BB]">{selectedImage.alt}</h3>
               <p className="text-sm text-[#111827]">{selectedImage.category}</p>
               <div className="absolute left-0 top-1/2 transform -translate-y-1/2">
                 <Button variant="outline" size="icon" onClick={handlePrevImage}>

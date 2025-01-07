@@ -84,7 +84,7 @@ export default function NewsModal({ isOpen, onClose, news }) {
           <div className="flex gap-2 w-full justify-center">
             <Button
               variant="secondary"
-              className="bg-[#18BEBC] hover:bg-[#4f8e90] text-white"
+              className="bg-[#1C74BB] hover:bg-[#4f8e90] text-white"
               onClick={() => handleShare('share')}
             >
               <Share2 className="w-4 h-4 mr-2" />

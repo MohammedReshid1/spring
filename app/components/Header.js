@@ -23,7 +23,17 @@ export default function Header() {
   return (
     <header className="flex justify-between items-center py-1.5 px-4 bg-white shadow-sm h-18 overflow-visible">
   <div className="logo -my-5">
-    <Image src="/images/SPRING_LOGO.png" alt="Academy Logo" width={150} height={75} className="object-contain" />
+  <Link href="/" legacyBehavior>
+      <a>
+        <Image
+          src="/images/SPRING_LOGO.png"
+          alt="Academy Logo"
+          width={150}
+          height={75}
+          className="object-contain"
+        />
+      </a>
+    </Link>
   </div>
   <nav className="hidden lg:block">
     <ul className="flex space-x-3">

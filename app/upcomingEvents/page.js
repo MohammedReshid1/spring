@@ -142,13 +142,6 @@ export default function EventsPage() {
           ))}
         </div>
       )}
-
-      <div className="text-center">
-        <EventIcon />
-        <Button className="bg-[#1C74BB] hover:bg-[#9a7691] text-white">
-          Create an Event
-        </Button>
-      </div>
     </main>
   )
 }

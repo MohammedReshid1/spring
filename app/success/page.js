@@ -176,9 +176,9 @@ export default function SuccessStoriesPage() {
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-[#1C74BB] text-white py-20 mt-10">
+      <section className="bg-gray-50 text-[#1C74BB] py-20 mb-8">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Success Stories</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 mt-4">Our Success Stories</h1>
           <p className="text-xl mb-8">Discover how our graduates are making an impact in the tech world</p>
           <Button className="bg-[#111827] hover:bg-gray-800 text-white">
             Start Your Journey
@@ -217,7 +217,7 @@ export default function SuccessStoriesPage() {
       </section>
 
       {/* Testimonial Carousel */}
-      <section className="bg-[#111827] text-white py-16">
+      <section className="bg-[#111827] text-white py-16 mb-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Our Alumni</h2>
           <div className="relative">
@@ -258,11 +258,10 @@ export default function SuccessStoriesPage() {
       </section>
 
 
-      <div className="success-stories-page">
+      {/* <div className="success-stories-page">
 
           <h2 className='cheader'>Our Certificates and Milestones</h2>
 
-      {/* Filter Bar */}
       <div className="filter-bar">
         <button
           className={`filter-btn ${filter === "all" ? "active" : ""}`}
@@ -284,7 +283,6 @@ export default function SuccessStoriesPage() {
         </button>
       </div>
 
-      {/* Stories Grid */}
       <div className="stories-grid">
         {rearrangedStories().map((story) => (
           <div
@@ -298,10 +296,9 @@ export default function SuccessStoriesPage() {
             <p>{story.description}</p>
           </div>
         ))}
-      </div>
+      </div> */}
 
-      {/* Styles */}
-      <style jsx>{`
+      {/* <style jsx>{`
         .cheader{
           margin:50px;
           margin-top:75px;
@@ -377,7 +374,7 @@ export default function SuccessStoriesPage() {
           font-size: 16px;
         }
       `}</style>
-    </div>
+    </div> */}
 
 
 

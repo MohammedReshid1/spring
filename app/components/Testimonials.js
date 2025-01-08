@@ -7,23 +7,23 @@ export default function Testimonials() {
   const testimonials = [
     {
       quote: "My experience here has been transformative. The faculty and resources have prepared me for a successful career.",
-      author: "Jane Doe",
+      author: "Mohammed Abdulwasi",
       role: "Computer Science Graduate"
     },
     {
       quote: "The diverse community and innovative programs have broadened my perspective and opened up new opportunities.",
-      author: "John Smith",
+      author: "Mahi Imran",
       role: "Business Administration Student"
     },
     {
       quote: "I've gained practical skills and industry connections that have jumpstarted my career.",
-      author: "Emily Johnson",
+      author: "Umer Ali",
       role: "Engineering Graduate"
     },
     {
       quote: "The supportive environment and challenging curriculum have helped me grow both personally and professionally.",
-      author: "Michael Brown",
-      role: "Psychology Student"
+      author: "Nejat Mohammed",
+      role: "Medicine Student"
     }
   ]
 
@@ -35,7 +35,7 @@ export default function Testimonials() {
         <InfiniteMovingCards
           items={testimonials}
           direction="right"
-          speed="slow"
+          speed="normal"
           className="py-4"
         >
           {(testimonial) => (

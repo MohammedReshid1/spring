@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 export default function TheCampus() {
@@ -12,9 +13,9 @@ export default function TheCampus() {
   }, [])
 
   const images = [
-    { src: "/images/campus2.jpg", alt: "Branches" },
-    { src: "/images/SKA-84.jpg", alt: "Activities" },
-    { src: "/images/SKA-26.jpg", alt: "Facilities" },
+    { src: "/images/campus2.jpg", alt: "Branches", link: "/branches" },
+    { src: "/images/SKA-84.jpg", alt: "Activities", link: "/branches" },
+    { src: "/images/SKA-26.jpg", alt: "Facilities", link: "/branches" },
   ]
 
   return (
@@ -37,16 +38,33 @@ export default function TheCampus() {
               animate={isLoaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <Image 
-                src={image.src} 
-                alt={image.alt} 
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <p className="text-white text-lg font-semibold">{image.alt}</p>
-              </div>
+              {image.link ? (
+                <Link href={image.link} className="block w-full h-full">
+                  <Image 
+                    src={image.src} 
+                    alt={image.alt} 
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <p className="text-white text-lg font-semibold">{image.alt}</p>
+                  </div>
+                </Link>
+              ) : (
+                <>
+                  <Image 
+                    src={image.src} 
+                    alt={image.alt} 
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <p className="text-white text-lg font-semibold">{image.alt}</p>
+                  </div>
+                </>
+              )}
             </motion.div>
           ))}
         </div>
@@ -62,3 +80,4 @@ export default function TheCampus() {
     </section>
   )
 }
+

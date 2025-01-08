@@ -176,9 +176,9 @@ export default function SuccessStoriesPage() {
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gray-50 text-[#1C74BB] py-20 mb-8">
+      <section className="bg-[#1C74BB] text-white py-20 mt-10">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 mt-4">Our Success Stories</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Success Stories</h1>
           <p className="text-xl mb-8">Discover how our graduates are making an impact in the tech world</p>
           <Button className="bg-[#111827] hover:bg-gray-800 text-white">
             Start Your Journey

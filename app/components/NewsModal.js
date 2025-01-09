@@ -8,21 +8,29 @@ import {
 import { Button } from "@/components/ui/button"
 import Image from 'next/image'
 import { CalendarIcon, Share2, Linkedin, Twitter, Link } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 export default function NewsModal({ isOpen, onClose, news }) {
+  const [ isClient, setIsClient ] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
   if (!news) return null
 
   const handleShare = async (type) => {
+    if (!isClient) return
+
     const url = window.location.href
-    const title = news.title
 
     switch (type) {
       case 'share':
         if (navigator.share) {
           try {
             await navigator.share({
-              title: title,
-              text: news.excerpt,
+              title: news.headline,
+              text: news.description,
               url: url,
             })
           } catch (err) {
@@ -51,13 +59,13 @@ export default function NewsModal({ isOpen, onClose, news }) {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">{news.title}</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">{news.headline}</DialogTitle>
         </DialogHeader>
         <div className="mt-4">
           <div className="relative h-64 w-full mb-4">
             <Image
-              src={news.imageUrl}
-              alt={news.title}
+              src={news.image}
+              alt={news.headline}
               fill
               className="object-cover rounded-lg"
             />
@@ -72,8 +80,9 @@ export default function NewsModal({ isOpen, onClose, news }) {
             </div>
           </div>
           <div className="space-y-4">
-            <p className="text-muted-foreground">{news.excerpt}</p>
+            <p className="text-muted-foreground">{news.description}</p>
             <p className="text-muted-foreground">
+              {/* Here will be the insertion of the news content for future purposes */}
               This is an expanded version of the story that provides more details and context about the news item.
               The full article would contain additional paragraphs, quotes, and related information that gives readers
               a comprehensive understanding of the topic.

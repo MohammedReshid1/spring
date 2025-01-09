@@ -61,7 +61,7 @@ export default function NewsSection() {
   }, [activeCategory, news])
 
   const handleReadMore = (id) => {
-    const news = news.find(item => item.id === id)
+    const newsItem = news.find(item => item.id === id)
     setSelectedNews(newsItem)
     setIsModalOpen(true)
   }

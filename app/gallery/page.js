@@ -12,12 +12,12 @@ import { Button } from "@/components/ui/button"
 
 // This would typically come from your backend
 const dummyImages = [
-  { id: 1, src: "/images/campus.jpg?height=300&width=300", alt: "Event 1", category: "Events" },
-  { id: 2, src: "/images/campus2.jpg?height=300&width=300", alt: "Campus 1", category: "Campus" },
-  { id: 3, src: "/images/campus.jpg?height=300&width=300", alt: "Student 1", category: "Students" },
-  { id: 4, src: "/images/campus2.jpg?height=300&width=300", alt: "Event 2", category: "Events" },
-  { id: 5, src: "/images/campus.jpg?height=300&width=300", alt: "Campus 2", category: "Campus" },
-  { id: 6, src: "/images/campus2.jpg?height=300&width=300", alt: "Student 2", category: "Students" },
+  { id: 1, image: "/images/campus.jpg?height=300&width=300", title: "Event 1", category: "Events" },
+  { id: 2, image: "/images/campus2.jpg?height=300&width=300", title: "Campus 1", category: "Campus" },
+  { id: 3, image: "/images/campus.jpg?height=300&width=300", title: "Student 1", category: "Students" },
+  { id: 4, image: "/images/campus2.jpg?height=300&width=300", title: "Event 2", category: "Events" },
+  { id: 5, image: "/images/campus.jpg?height=300&width=300", title: "Campus 2", category: "Campus" },
+  { id: 6, image: "/images/campus2.jpg?height=300&width=300", title: "Student 2", category: "Students" },
 ]
 
 export default function GalleryPage() {
@@ -27,18 +27,52 @@ export default function GalleryPage() {
   const [categoryFilter, setCategoryFilter] = useState('All')
   const [selectedImage, setSelectedImage] = useState(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
 
+  // useEffect(() => {
+  //   setImages(dummyImages)
+  //   setFilteredImages(dummyImages)
+  // }, [])
+  
   // Simulating data fetching from backend
   useEffect(() => {
     // In a real application, this would be an API call
-    setImages(dummyImages)
-    setFilteredImages(dummyImages)
+    const fetchImages = async () => {
+      setIsLoading(true)
+      try {
+        const response = await fetch('http://57.129.71.13:8001/gallery')
+        const data = await response.json()
+  
+        if (data.status === 'success' && Array.isArray(data.gallery_items)) {
+          console.log("Success");
+          
+          const formattedImages = data.gallery_items.map(image => ({
+            id: image.id,
+            image: image.image || "/images/campus.jpg", // Placeholder image
+            title: image.title,
+            category: image.category,
+            description: image.description,
+            created_at: new Date(image.created_at * 1000 || Date.now()).toISOString().split('T')[0],
+          }))
+          setImages(formattedImages)
+        } else {
+          throw new Error('Failed to fetch images from API')
+        }
+      } catch (error) {
+        console.error('Error fetching images:', error)
+        setError('Failed to load images. Please try again later.')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchImages()
   }, [])
 
   useEffect(() => {
     const filtered = images.filter(image => 
       (categoryFilter === 'All' || image.category === categoryFilter) &&
-      image.alt.toLowerCase().includes(searchTerm.toLowerCase())
+      image.title.toLowerCase().includes(searchTerm.toLowerCase())
     )
     setFilteredImages(filtered)
   }, [searchTerm, categoryFilter, images])
@@ -104,15 +138,16 @@ export default function GalleryPage() {
             >
               <CardContent className="p-0">
                 <Image
-                  src={image.src}
-                  alt={image.alt}
+                  src={image.image}
+                  alt={image.title}
                   width={300}
                   height={300}
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold text-[#1C74BB]">{image.alt}</h3>
+                  <h3 className="text-lg font-semibold text-[#1C74BB]">{image.title}</h3>
                   <p className="text-sm text-[#111827]">{image.category}</p>
+                  <p className="text-sm text-[#111827]">{image.description}</p>
                 </div>
               </CardContent>
             </Card>
@@ -131,14 +166,15 @@ export default function GalleryPage() {
             <div className="flex flex-col items-center relative">
               <div className="w-full h-[60vh] relative">
                 <Image
-                  src={selectedImage.src}
-                  alt={selectedImage.alt}
+                  src={selectedImage.image}
+                  alt={selectedImage.title}
                   fill
                   className="object-contain"
                 />
               </div>
-              <h3 className="text-xl font-semibold mt-4 text-[#1C74BB]">{selectedImage.alt}</h3>
+              <h3 className="text-xl font-semibold mt-4 text-[#1C74BB]">{selectedImage.title}</h3>
               <p className="text-sm text-[#111827]">{selectedImage.category}</p>
+              <p className="text-sm text-[#111827]">{selectedImage.description}</p>
               <div className="absolute left-0 top-1/2 transform -translate-y-1/2">
                 <Button variant="outline" size="icon" onClick={handlePrevImage}>
                   <ChevronLeft className="h-4 w-4" />

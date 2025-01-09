@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
+//.. Replaced by information being fetched from Database
 const successStories = [
   {
     id: 1,
@@ -59,6 +60,9 @@ const testimonials = [
 
 export default function SuccessStoriesPage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
+  const [success_stories, setSuccess_stories] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
@@ -69,7 +73,8 @@ export default function SuccessStoriesPage() {
   }
 
   // Sample data for milestones and certificates
-  const stories = [
+  //.. Old name = stories
+  const milestones = [
     {
       id: 1,
       type: "certificate",
@@ -173,6 +178,37 @@ export default function SuccessStoriesPage() {
   };
 
 
+  useEffect(() => {
+    const fetchStories = async () => {
+      setIsLoading(true)
+      try {
+        const response = await fetch('http://57.129.71.13:8001/success_stories')
+        const data = await response.json()
+  
+        if (data.status === 'success' && Array.isArray(data.success_stories)) {
+          const formattedStories = data.success_stories.map(story => ({
+            id: story.id,
+            name: story.name,
+            position: story.position,
+            message: story.message,
+            image: story.image || "/images/campus.jpg?height=200&width=300", // Placeholder image
+            created_at: new Date(story.created_at * 1000 || Date.now()).toISOString().split('T')[0],
+          }))
+          setSuccess_stories(formattedStories)
+        } else {
+          throw new Error('Failed to fetch stories from API')
+        }
+      } catch (error) {
+        console.error('Error fetching stories:', error)
+        setError('Failed to load stories. Please try again later.')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchStories()
+  }, [])
+
+
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -190,7 +226,7 @@ export default function SuccessStoriesPage() {
       <section className="py-16 container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12 text-[#111827]">Featured Alumni</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {successStories.map((story) => (
+          {success_stories.map((story) => (
             <motion.div
               key={story.id}
               initial={{ opacity: 0, y: 20 }}
@@ -207,8 +243,8 @@ export default function SuccessStoriesPage() {
                 />
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-2 text-[#1C74BB]">{story.name}</h3>
-                  <p className="text-sm text-gray-600 mb-4">{story.title}</p>
-                  <p className="text-[#111827]">{story.story}</p>
+                  <p className="text-sm text-gray-600 mb-4">{story.position}</p>
+                  <p className="text-[#111827]">{story.message}</p>
                 </CardContent>
               </Card>
             </motion.div>

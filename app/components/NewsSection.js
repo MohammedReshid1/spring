@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useMemo } from 'react'
-import { newsData } from '../data/news'
+import { useState, useMemo, useEffect } from 'react'
+// import { newsData } from '../data/news'
 import CategorySelector from './CategorySelector'
 import NewsCard from './NewsCard'
 import NewsModal from './NewsModal'
@@ -9,24 +9,60 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 export default function NewsSection() {
+  const [news, setNews] = useState([])
   const [activeCategory, setActiveCategory] = useState('All')
   const [selectedNews, setSelectedNews] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isFullListOpen, setIsFullListOpen] = useState(false)
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const categories = useMemo(() => {
-    const uniqueCategories = [...new Set(newsData.map(item => item.category))]
-    return ['All', ...uniqueCategories.sort()]
+
+  //.. Fetching news from the db
+  useEffect(() => {
+    const fetchNews = async () => {
+      setIsLoading(true)
+      try {
+        const response = await fetch('http://57.129.71.13:8001/news')
+        const data = await response.json()
+
+        if (data.status === 'success' && Array.isArray(data.articles)) {
+          const formattedNews = data.articles.map(article => ({
+            id: article.id,
+            headline: article.headline,
+            description: article.description,
+            image: article.image || "/images/campus.jpg?height=200&width=300", // Placeholder image
+            category: article.category,
+            date: new Date(article.date * 1000 || Date.now()).toISOString().split('T')[0],
+            location: article.location
+          }))
+          setNews(formattedNews)
+        } else {
+          throw new Error('Failed to fetch news from API')
+        }
+      } catch (error) {
+        console.error('Error fetching news:', error)
+        setError('Failed to load news. Please try again later.')
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchNews()
   }, [])
 
+  const categories = useMemo(() => {
+    const uniqueCategories = [...new Set(news.map(item => item.category))]
+    return ['All', ...uniqueCategories.sort()]
+  }, [news])
+
   const filteredNews = useMemo(() => {
-    if (activeCategory === 'All') return newsData
-    return newsData.filter(news => news.category === activeCategory)
-  }, [activeCategory])
+    if (activeCategory === 'All') return news
+    return news.filter(newsItem => newsItem.category === activeCategory)
+  }, [activeCategory, news])
 
   const handleReadMore = (id) => {
-    const news = newsData.find(item => item.id === id)
-    setSelectedNews(news)
+    const news = news.find(item => item.id === id)
+    setSelectedNews(newsItem)
     setIsModalOpen(true)
   }
 
@@ -48,10 +84,10 @@ export default function NewsSection() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredNews.map((news) => (
-              <NewsCard 
-                key={news.id} 
-                {...news} 
+            {filteredNews.map((newsItem) => (
+              <NewsCard
+                key={newsItem.id}
+                {...newsItem}
                 onReadMore={handleReadMore}
               />
             ))}
@@ -69,7 +105,7 @@ export default function NewsSection() {
         </Button>
       </div>
 
-      <NewsModal 
+      <NewsModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         news={selectedNews}
@@ -87,10 +123,10 @@ export default function NewsSection() {
               onSelect={setActiveCategory}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-              {filteredNews.map((news) => (
-                <NewsCard 
-                  key={news.id} 
-                  {...news} 
+              {filteredNews.map((newsItem) => (
+                <NewsCard
+                  key={newsItem.id}
+                  {...newsItem}
                   onReadMore={handleReadMore} // Modified to only open NewsModal without closing the full list
                 />
               ))}

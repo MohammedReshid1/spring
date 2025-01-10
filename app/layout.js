@@ -5,6 +5,22 @@ import Footer from './components/Footer';
 
 export const metadata = {
   title: 'Spring of Knowledge Academy',
+  description: 'Empowering minds through education',
+  openGraph: {
+    title: 'Spring of Knowledge Academy',
+    description: 'Empowering minds through education',
+    url: 'https://www.springofknowledge.org', // Replace with your actual URL
+    siteName: 'Spring of Knowledge Academy',
+    images: [
+      {
+        url: 'https://www.springofknowledge.org/images/Spring_Icon.png', // Replace with your actual image URL
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-icon.png',

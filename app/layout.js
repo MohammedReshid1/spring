@@ -6,8 +6,11 @@ import Footer from './components/Footer';
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${montserrat.variable} font-sans`}>
-      <title>Spring of Knowledge Academy</title>
-      <link rel="icon" type="image/x-icon" href="./favicon.ico"></link>
+      <head>
+        <title>Spring of Knowledge Academy</title>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="./apple-icon.png" />
+      </head>
       <body className={montserrat.className}>
         <Header />
         <main>{children}</main>

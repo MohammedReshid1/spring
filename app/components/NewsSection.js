@@ -23,7 +23,7 @@ export default function NewsSection() {
     const fetchNews = async () => {
       setIsLoading(true)
       try {
-        const response = await fetch('http://57.129.71.13:8001/news')
+        const response = await fetch('https://api.springofknowledge.org/news')
         const data = await response.json()
 
         if (data.status === 'success' && Array.isArray(data.articles)) {

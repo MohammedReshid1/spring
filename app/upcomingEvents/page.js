@@ -48,7 +48,7 @@ export default function EventsPage() {
     const fetchEvents = async () => {
       setIsLoading(true)
       try {
-        const response = await fetch('http://57.129.71.13:8001/events')
+        const response = await fetch('https://api.springofknowledge.org/events')
         const data = await response.json()
   
         if (data.status === 'success' && Array.isArray(data.events)) {

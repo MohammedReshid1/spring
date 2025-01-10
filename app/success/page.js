@@ -182,7 +182,7 @@ export default function SuccessStoriesPage() {
     const fetchStories = async () => {
       setIsLoading(true)
       try {
-        const response = await fetch('http://57.129.71.13:8001/success_stories')
+        const response = await fetch('https://api.springofknowledge.org/success_stories')
         const data = await response.json()
   
         if (data.status === 'success' && Array.isArray(data.success_stories)) {

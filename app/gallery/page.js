@@ -41,7 +41,7 @@ export default function GalleryPage() {
     const fetchImages = async () => {
       setIsLoading(true)
       try {
-        const response = await fetch('http://57.129.71.13:8001/gallery')
+        const response = await fetch('https://api.springofknowledge.org/gallery')
         const data = await response.json()
   
         if (data.status === 'success' && Array.isArray(data.gallery_items)) {

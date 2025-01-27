@@ -18,28 +18,6 @@ const getImageUrl = (imagePath) => {
   return `https://springofknowledge.org/${path}`
 }
 
-const EventIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="200"
-    height="200"
-    viewBox="0 0 200 200"
-    fill="none"
-    className="mx-auto mb-4"
-  >
-    <rect x="40" y="40" width="120" height="120" rx="8" fill="#1C74BB" />
-    <path
-      d="M70 70H130M70 100H130M70 130H110"
-      stroke="white"
-      strokeWidth="8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <circle cx="150" cy="150" r="30" fill="#111827" />
-    <path d="M150 140V160M140 150H160" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-)
-
 export default function EventsPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [filter, setFilter] = useState("all")
@@ -125,20 +103,20 @@ export default function EventsPage() {
               transition={{ duration: 0.3 }}
             >
               <Card className="h-full transition-all duration-300 hover:shadow-lg hover:scale-105">
-                {getImageUrl(event.image) ? (
-                  <div className="relative w-full h-48">
+                <div className="relative w-full h-48">
+                  {getImageUrl(event.image) ? (
                     <Image
                       src={getImageUrl(event.image) || "/placeholder.svg"}
                       alt={event.title}
                       fill
                       className="object-cover rounded-t-lg"
                     />
-                  </div>
-                ) : (
-                  <div className="w-full h-48 bg-gray-100 rounded-t-lg flex items-center justify-center">
-                    <span className="text-gray-400">No image available</span>
-                  </div>
-                )}
+                  ) : (
+                    <div className="w-full h-full bg-gray-100 rounded-t-lg flex items-center justify-center">
+                      <span className="text-gray-400">No image available</span>
+                    </div>
+                  )}
+                </div>
                 <CardContent className="p-6">
                   <CardTitle className="mb-2 text-[#1C74BB]">{event.title}</CardTitle>
                   <p className="text-sm text-gray-600 mb-4">{event.description}</p>

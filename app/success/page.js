@@ -20,21 +20,21 @@ const getImageUrl = (imagePath) => {
 const testimonials = [
   {
     id: 1,
-    name: "David Lee",
+    name: "Ousman Mustefa",
     role: "Data Scientist",
     avatar: "/images/campus2.jpg?height=100&width=100",
     content: "The data science program here is world-class. It opened up so many opportunities for me.",
   },
   {
     id: 2,
-    name: "Jessica Martinez",
+    name: "Ahmed Mohammed",
     role: "UX Designer",
     avatar: "/images/campus2.jpg?height=100&width=100",
     content: "I learned not just design skills, but also how to work effectively in cross-functional teams.",
   },
   {
     id: 3,
-    name: "Alex Thompson",
+    name: "Yusuf Abubeker",
     role: "Cybersecurity Analyst",
     avatar: "/images/campus2.jpg?height=100&width=100",
     content: "The cybersecurity curriculum is constantly updated to keep up with the latest threats and technologies.",
@@ -99,38 +99,44 @@ export default function SuccessStoriesPage() {
       {/* Success Stories Grid */}
       <section className="py-16 container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12 text-[#111827]">Featured Alumni</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {success_stories.map((story) => (
-            <motion.div
-              key={story.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="relative w-full h-48">
-                  {getImageUrl(story.image) ? (
-                    <Image
-                      src={getImageUrl(story.image) || "/placeholder.svg"}
-                      alt={story.name}
-                      fill
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                      <span className="text-gray-400">No image available</span>
-                    </div>
-                  )}
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 text-[#1C74BB]">{story.name}</h3>
-                  <p className="text-sm text-gray-600 mb-4">{story.position}</p>
-                  <p className="text-[#111827]">{story.message}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+        {isLoading ? (
+          <p className="text-center">Loading stories...</p>
+        ) : error ? (
+          <p className="text-center text-red-500">{error}</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {success_stories.map((story) => (
+              <motion.div
+                key={story.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                  <div className="relative w-full h-48">
+                    {getImageUrl(story.image) ? (
+                      <Image
+                        src={getImageUrl(story.image) || "/placeholder.svg"}
+                        alt={story.name}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+                        <span className="text-gray-400">No image available</span>
+                      </div>
+                    )}
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-2 text-[#1C74BB]">{story.name}</h3>
+                    <p className="text-sm text-gray-600 mb-4">{story.position}</p>
+                    <p className="text-[#111827]">{story.message}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Testimonial Carousel */}

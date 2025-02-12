@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Search, Calendar } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Search, Calendar, Clock, MapPin, LinkIcon } from "lucide-react"
+import { Card, CardContent, CardTitle, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -38,8 +38,11 @@ export default function EventsPage() {
             title: event.title,
             description: event.description,
             image: event.image,
-            date: new Date(event.starts_on * 1000).toISOString().split("T")[0],
+            startDate: new Date(event.starts_on * 1000).toISOString().split("T")[0],
+            endDate: new Date(event.ends_on * 1000).toISOString().split("T")[0],
             location: event.location,
+            registrationLink: event.registration_link,
+            schedule: event.schedule,
           }))
           setEvents(formattedEvents)
         } else {
@@ -59,8 +62,8 @@ export default function EventsPage() {
     const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesFilter =
       filter === "all" ||
-      (filter === "upcoming" && new Date(event.date) > new Date()) ||
-      (filter === "passed" && new Date(event.date) <= new Date())
+      (filter === "upcoming" && new Date(event.startDate) > new Date()) ||
+      (filter === "passed" && new Date(event.endDate) <= new Date())
     return matchesSearch && matchesFilter
   })
 
@@ -104,28 +107,50 @@ export default function EventsPage() {
             >
               <Card className="h-full transition-all duration-300 hover:shadow-lg hover:scale-105">
                 <div className="relative w-full h-48">
-                  {getImageUrl(event.image) ? (
-                    <Image
-                      src={getImageUrl(event.image) || "/placeholder.svg"}
-                      alt={event.title}
-                      fill
-                      className="object-cover rounded-t-lg"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gray-100 rounded-t-lg flex items-center justify-center">
-                      <span className="text-gray-400">No image available</span>
-                    </div>
-                  )}
+                  <Image
+                    src={getImageUrl(event.image) || "/placeholder.svg"}
+                    alt={event.title}
+                    fill
+                    className="object-cover rounded-t-lg"
+                    onError={(e) => {
+                      e.currentTarget.src = "/placeholder.svg"
+                    }}
+                  />
                 </div>
                 <CardContent className="p-6">
                   <CardTitle className="mb-2 text-[#1C74BB]">{event.title}</CardTitle>
                   <p className="text-sm text-gray-600 mb-4">{event.description}</p>
-                  <div className="flex items-center text-sm text-[#111827]">
+                  <div className="flex items-center text-sm text-[#111827] mb-2">
                     <Calendar size={16} className="mr-2" />
-                    {new Date(event.date).toLocaleDateString()}
+                    <span>Start: {new Date(event.startDate).toLocaleDateString()}</span>
                   </div>
-                  {event.location && <p className="text-sm text-gray-600 mt-2">Location: {event.location}</p>}
+                  <div className="flex items-center text-sm text-[#111827] mb-2">
+                    <Calendar size={16} className="mr-2" />
+                    <span>End: {new Date(event.endDate).toLocaleDateString()}</span>
+                  </div>
+                  {event.location && (
+                    <div className="flex items-center text-sm text-gray-600 mb-2">
+                      <MapPin size={16} className="mr-2" />
+                      <span>{event.location}</span>
+                    </div>
+                  )}
+                  {event.schedule && (
+                    <div className="flex items-start text-sm text-gray-600 mb-2">
+                      <Clock size={16} className="mr-2 mt-1" />
+                      <span>{event.schedule}</span>
+                    </div>
+                  )}
                 </CardContent>
+                <CardFooter>
+                  {event.registrationLink && (
+                    <Button asChild className="w-full bg-[#1C74BB] hover:bg-[#1C74BB]/90 text-white">
+                      <a href={event.registrationLink} target="_blank" rel="noopener noreferrer">
+                        <LinkIcon size={16} className="mr-2" />
+                        Register
+                      </a>
+                    </Button>
+                  )}
+                </CardFooter>
               </Card>
             </motion.div>
           ))}

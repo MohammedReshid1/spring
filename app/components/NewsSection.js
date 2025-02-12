@@ -1,21 +1,12 @@
 "use client"
 
 import { useState, useMemo, useEffect } from "react"
-import Image from "next/image"
 import CategorySelector from "./CategorySelector"
 import NewsCard from "./NewsCard"
 import NewsModal from "./NewsModal"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-
-const getImageUrl = (imagePath) => {
-  if (!imagePath) return null
-  // Remove any leading slashes and ensure clean path
-  const cleanPath = imagePath.replace(/^\/+|\/+$/g, "")
-  // Add single /images/ prefix if not present
-  const path = cleanPath.startsWith("images/") ? cleanPath : `images/${cleanPath}`
-  return `https://springofknowledge.org/${path}`
-}
+import { getImageUrl } from "@/lib/imageUtils"
 
 export default function NewsSection() {
   const [news, setNews] = useState([])
@@ -38,7 +29,7 @@ export default function NewsSection() {
             id: article.id,
             headline: article.headline,
             description: article.description,
-            image: article.image, // Use the actual image path from the API
+            image: article.image,
             category: article.category,
             date: new Date(article.date * 1000 || Date.now()).toISOString().split("T")[0],
             location: article.location,
@@ -73,6 +64,14 @@ export default function NewsSection() {
     setIsModalOpen(true)
   }
 
+  if (isLoading) {
+    return <div className="text-center py-10">Loading news...</div>
+  }
+
+  if (error) {
+    return <div className="text-center py-10 text-red-500">{error}</div>
+  }
+
   return (
     <div className="relative h-[80vh] overflow-hidden">
       <div className="h-full">
@@ -100,7 +99,7 @@ export default function NewsSection() {
       </div>
 
       {/* White mask with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white pointer-events-auto" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white pointer-events-none" />
 
       {/* Read More button */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">

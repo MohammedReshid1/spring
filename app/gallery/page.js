@@ -11,10 +11,10 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 
 const getImageUrl = (imagePath) => {
-  if (!imagePath) return null
+  if (!imagePath) return "/placeholder.svg"
   // Remove any leading slashes and ensure clean path
   const cleanPath = imagePath.replace(/^\/+|\/+$/g, "")
-  // Add single /images/ prefix if not present
+  // Avoid adding duplicate 'images/' prefix
   const path = cleanPath.startsWith("images/") ? cleanPath : `images/${cleanPath}`
   return `https://springofknowledge.org/${path}`
 }
@@ -137,18 +137,15 @@ export default function GalleryPage() {
               >
                 <CardContent className="p-0">
                   <div className="relative w-full h-64">
-                    {getImageUrl(image.image) ? (
-                      <Image
-                        src={getImageUrl(image.image) || "/placeholder.svg"}
-                        alt={image.title}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                        <span className="text-gray-400">No image available</span>
-                      </div>
-                    )}
+                    <Image
+                      src={getImageUrl(image.image) || "/placeholder.svg"}
+                      alt={image.title}
+                      fill
+                      className="object-cover"
+                      onError={(e) => {
+                        e.currentTarget.src = "/placeholder.svg"
+                      }}
+                    />
                   </div>
                   <div className="p-4">
                     <h3 className="text-lg font-semibold text-[#1C74BB]">{image.title}</h3>
@@ -172,18 +169,15 @@ export default function GalleryPage() {
           {selectedImage && (
             <div className="flex flex-col items-center relative">
               <div className="w-full h-[60vh] relative">
-                {getImageUrl(selectedImage.image) ? (
-                  <Image
-                    src={getImageUrl(selectedImage.image) || "/placeholder.svg"}
-                    alt={selectedImage.title}
-                    fill
-                    className="object-contain"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                    <span className="text-gray-400">No image available</span>
-                  </div>
-                )}
+                <Image
+                  src={getImageUrl(selectedImage.image) || "/placeholder.svg"}
+                  alt={selectedImage.title}
+                  fill
+                  className="object-contain"
+                  onError={(e) => {
+                    e.currentTarget.src = "/placeholder.svg"
+                  }}
+                />
               </div>
               <h3 className="text-xl font-semibold mt-4 text-[#1C74BB]">{selectedImage.title}</h3>
               <p className="text-sm text-[#111827]">{selectedImage.category}</p>

@@ -1,38 +1,22 @@
-import Image from 'next/image'
+import Image from "next/image"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { CalendarIcon } from 'lucide-react'
 
-export default function NewsCard({ id, headline, category, description, image, date, onReadMore }) {
+export default function NewsCard({ id, headline, description, imageUrl, category, date, location, onReadMore }) {
   return (
-    <Card className="overflow-hidden flex flex-col h-full">
+    <Card className="overflow-hidden">
       <div className="relative h-48 w-full">
-        <Image
-          src={image}
-          alt={headline}
-          fill
-          className="object-cover"
-        />
-        <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-primary text-primary-foreground rounded-full text-sm font-medium">
-            {category}
-          </span>
-        </div>
+        <Image src={imageUrl || "/placeholder.svg"} alt={headline} fill style={{ objectFit: "cover" }} />
       </div>
-      <CardContent className="flex-grow p-6">
-        <div className="flex items-center text-sm text-muted-foreground mb-2">
-          <CalendarIcon className="mr-2 h-4 w-4" />
-          {new Date(date).toLocaleDateString()}
-        </div>
-        <h3 className="text-xl font-bold mb-2 line-clamp-2">{headline}</h3>
-        <p className="text-muted-foreground line-clamp-3">{description}</p>
+      <CardContent className="p-4">
+        <h3 className="text-xl font-semibold mb-2">{headline}</h3>
+        <p className="text-sm text-gray-600 mb-2">{description}</p>
+        <p className="text-xs text-gray-500">
+          {category} | {date} | {location}
+        </p>
       </CardContent>
-      <CardFooter className="p-6 pt-0">
-        <Button 
-          className="w-full" 
-          variant="outline"
-          onClick={() => onReadMore(id)}
-        >
+      <CardFooter>
+        <Button onClick={() => onReadMore(id)} variant="outline" className="w-full">
           Read More
         </Button>
       </CardFooter>

@@ -9,10 +9,10 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const getImageUrl = (imagePath) => {
-  if (!imagePath) return null
+  if (!imagePath) return "/placeholder.svg"
   // Remove any leading slashes and ensure clean path
   const cleanPath = imagePath.replace(/^\/+|\/+$/g, "")
-  // Add single /images/ prefix if not present
+  // Avoid adding duplicate 'images/' prefix
   const path = cleanPath.startsWith("images/") ? cleanPath : `images/${cleanPath}`
   return `https://springofknowledge.org/${path}`
 }
@@ -20,21 +20,21 @@ const getImageUrl = (imagePath) => {
 const testimonials = [
   {
     id: 1,
-    name: "Ousman Mustefa",
+    name: "David Lee",
     role: "Data Scientist",
     avatar: "/images/campus2.jpg?height=100&width=100",
     content: "The data science program here is world-class. It opened up so many opportunities for me.",
   },
   {
     id: 2,
-    name: "Ahmed Mohammed",
+    name: "Jessica Martinez",
     role: "UX Designer",
     avatar: "/images/campus2.jpg?height=100&width=100",
     content: "I learned not just design skills, but also how to work effectively in cross-functional teams.",
   },
   {
     id: 3,
-    name: "Yusuf Abubeker",
+    name: "Alex Thompson",
     role: "Cybersecurity Analyst",
     avatar: "/images/campus2.jpg?height=100&width=100",
     content: "The cybersecurity curriculum is constantly updated to keep up with the latest threats and technologies.",
@@ -42,6 +42,16 @@ const testimonials = [
 ]
 
 export default function SuccessStoriesPage() {
+/**
+ * The SuccessStoriesPage component displays a list of success stories from the Spring of Knowledge API
+ * and a carousel of testimonials from alumni.
+ *
+ * The component fetches the list of success stories from the API and displays them in a grid.
+ * The testimonial carousel displays a single testimonial at a time and allows the user to navigate
+ * to the previous or next testimonial.
+ *
+ * @returns The SuccessStoriesPage component.
+ */
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [success_stories, setSuccess_stories] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -68,7 +78,7 @@ export default function SuccessStoriesPage() {
             name: story.name,
             position: story.position,
             message: story.message,
-            image: story.image, // Use the actual image path from the API
+            image: story.image,
             created_at: new Date(story.created_at * 1000 || Date.now()).toISOString().split("T")[0],
           }))
           setSuccess_stories(formattedStories)
@@ -87,7 +97,6 @@ export default function SuccessStoriesPage() {
 
   return (
     <main className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
       <section className="bg-[#1C74BB] text-white py-20 mt-10">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Success Stories</h1>
@@ -96,7 +105,6 @@ export default function SuccessStoriesPage() {
         </div>
       </section>
 
-      {/* Success Stories Grid */}
       <section className="py-16 container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12 text-[#111827]">Featured Alumni</h2>
         {isLoading ? (
@@ -114,18 +122,15 @@ export default function SuccessStoriesPage() {
               >
                 <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
                   <div className="relative w-full h-48">
-                    {getImageUrl(story.image) ? (
-                      <Image
-                        src={getImageUrl(story.image) || "/placeholder.svg"}
-                        alt={story.name}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                        <span className="text-gray-400">No image available</span>
-                      </div>
-                    )}
+                    <Image
+                      src={getImageUrl(story.image) || "/placeholder.svg"}
+                      alt={story.name}
+                      fill
+                      className="object-cover"
+                      onError={(e) => {
+                        e.currentTarget.src = "/placeholder.svg"
+                      }}
+                    />
                   </div>
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold mb-2 text-[#1C74BB]">{story.name}</h3>
@@ -139,7 +144,6 @@ export default function SuccessStoriesPage() {
         )}
       </section>
 
-      {/* Testimonial Carousel */}
       <section className="bg-[#111827] text-white py-16 mb-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Our Alumni</h2>
@@ -155,6 +159,9 @@ export default function SuccessStoriesPage() {
                 <AvatarImage
                   src={getImageUrl(testimonials[currentTestimonial].avatar)}
                   alt={testimonials[currentTestimonial].name}
+                  onError={(e) => {
+                    e.currentTarget.src = "/placeholder.svg"
+                  }}
                 />
                 <AvatarFallback>{testimonials[currentTestimonial].name.charAt(0)}</AvatarFallback>
               </Avatar>

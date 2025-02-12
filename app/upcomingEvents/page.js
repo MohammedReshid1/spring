@@ -41,9 +41,10 @@ export default function EventsPage() {
             startDate: new Date(event.starts_on * 1000).toISOString().split("T")[0],
             endDate: new Date(event.ends_on * 1000).toISOString().split("T")[0],
             location: event.location,
-            registrationLink: event.registration_link,
+            eventRegistrationLink: event.event_registration_link, // Updated this line
             schedule: event.schedule,
           }))
+          console.log("Formatted Events:", formattedEvents) // For debugging
           setEvents(formattedEvents)
         } else {
           throw new Error("Failed to fetch events from API")
@@ -142,13 +143,15 @@ export default function EventsPage() {
                   )}
                 </CardContent>
                 <CardFooter>
-                  {event.registrationLink && (
+                  {event.eventRegistrationLink ? (
                     <Button asChild className="w-full bg-[#1C74BB] hover:bg-[#1C74BB]/90 text-white">
-                      <a href={event.registrationLink} target="_blank" rel="noopener noreferrer">
+                      <a href={event.eventRegistrationLink} target="_blank" rel="noopener noreferrer">
                         <LinkIcon size={16} className="mr-2" />
                         Register
                       </a>
                     </Button>
+                  ) : (
+                    <p className="text-sm text-gray-500 italic">Registration not available</p>
                   )}
                 </CardFooter>
               </Card>

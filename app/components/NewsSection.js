@@ -60,7 +60,11 @@ export default function NewsSection() {
 
   const handleReadMore = (id) => {
     const newsItem = news.find((item) => item.id === id)
-    setSelectedNews(newsItem)
+    // Add the processed imageUrl to the news item
+    setSelectedNews({
+      ...newsItem,
+      imageUrl: getImageUrl(newsItem.image),
+    })
     setIsModalOpen(true)
   }
 

@@ -1,17 +1,13 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog"
+"use client"
+
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import Image from 'next/image'
-import { CalendarIcon, Share2, Linkedin, Twitter, Link } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import Image from "next/image"
+import { CalendarIcon, Share2, Linkedin, Twitter, Link } from "lucide-react"
+import { useState, useEffect } from "react"
 
 export default function NewsModal({ isOpen, onClose, news }) {
-  const [ isClient, setIsClient ] = useState(false)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
     setIsClient(true)
@@ -25,7 +21,7 @@ export default function NewsModal({ isOpen, onClose, news }) {
     const url = window.location.href
 
     switch (type) {
-      case 'share':
+      case "share":
         if (navigator.share) {
           try {
             await navigator.share({
@@ -34,22 +30,25 @@ export default function NewsModal({ isOpen, onClose, news }) {
               url: url,
             })
           } catch (err) {
-            console.error('Error sharing:', err)
+            console.error("Error sharing:", err)
           }
         }
         break
-      case 'linkedin':
-        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank')
+      case "linkedin":
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, "_blank")
         break
-      case 'twitter':
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank')
+      case "twitter":
+        window.open(
+          `https://twitter.com/intent/tweet?text=${encodeURIComponent(news.headline)}&url=${encodeURIComponent(url)}`,
+          "_blank",
+        )
         break
-      case 'copy':
+      case "copy":
         try {
           await navigator.clipboard.writeText(url)
-          alert('Link copied to clipboard!')
+          alert("Link copied to clipboard!")
         } catch (err) {
-          console.error('Error copying to clipboard:', err)
+          console.error("Error copying to clipboard:", err)
         }
         break
     }
@@ -64,7 +63,7 @@ export default function NewsModal({ isOpen, onClose, news }) {
         <div className="mt-4">
           <div className="relative h-64 w-full mb-4">
             <Image
-              src={news.image}
+              src={news.imageUrl || news.image || "/placeholder.svg"}
               alt={news.headline}
               fill
               className="object-cover rounded-lg"
@@ -83,9 +82,9 @@ export default function NewsModal({ isOpen, onClose, news }) {
             <p className="text-muted-foreground">{news.description}</p>
             <p className="text-muted-foreground">
               {/* Here will be the insertion of the news content for future purposes */}
-              This is an expanded version of the story that provides more details and context about the news item.
-              The full article would contain additional paragraphs, quotes, and related information that gives readers
-              a comprehensive understanding of the topic.
+              This is an expanded version of the story that provides more details and context about the news item. The
+              full article would contain additional paragraphs, quotes, and related information that gives readers a
+              comprehensive understanding of the topic.
             </p>
           </div>
         </div>
@@ -94,7 +93,7 @@ export default function NewsModal({ isOpen, onClose, news }) {
             <Button
               variant="secondary"
               className="bg-[#1C74BB] hover:bg-[#4f8e90] text-white"
-              onClick={() => handleShare('share')}
+              onClick={() => handleShare("share")}
             >
               <Share2 className="w-4 h-4 mr-2" />
               Share
@@ -102,21 +101,21 @@ export default function NewsModal({ isOpen, onClose, news }) {
             <Button
               variant="secondary"
               className="bg-[#5f9ea0] hover:bg-[#4f8e90] text-white"
-              onClick={() => handleShare('linkedin')}
+              onClick={() => handleShare("linkedin")}
             >
               <Linkedin className="w-4 h-4" />
             </Button>
             <Button
               variant="secondary"
               className="bg-[#5f9ea0] hover:bg-[#4f8e90] text-white"
-              onClick={() => handleShare('twitter')}
+              onClick={() => handleShare("twitter")}
             >
               <Twitter className="w-4 h-4" />
             </Button>
             <Button
               variant="secondary"
               className="bg-[#5f9ea0] hover:bg-[#4f8e90] text-white"
-              onClick={() => handleShare('copy')}
+              onClick={() => handleShare("copy")}
             >
               <Link className="w-4 h-4" />
             </Button>

@@ -5,68 +5,41 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { CalendarIcon, Share2, Linkedin, Twitter, Link } from "lucide-react"
 import { useState, useEffect } from "react"
+import { useModal } from '@/app/contexts/ModalContext'
 
-export default function NewsModal({ isOpen, onClose, news }) {
+export default function NewsModal({ isOpen, onClose, news, modalId }) {
+  const { activeModal, openModal, closeModal } = useModal()
   const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
     setIsClient(true)
-  }, [])
-
-  if (!news) return null
-
-  const handleShare = async (type) => {
-    if (!isClient) return
-
-    const url = window.location.href
-
-    switch (type) {
-      case "share":
-        if (navigator.share) {
-          try {
-            await navigator.share({
-              title: news.headline,
-              text: news.description,
-              url: url,
-            })
-          } catch (err) {
-            console.error("Error sharing:", err)
-          }
-        }
-        break
-      case "linkedin":
-        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, "_blank")
-        break
-      case "twitter":
-        window.open(
-          `https://twitter.com/intent/tweet?text=${encodeURIComponent(news.headline)}&url=${encodeURIComponent(url)}`,
-          "_blank",
-        )
-        break
-      case "copy":
-        try {
-          await navigator.clipboard.writeText(url)
-          alert("Link copied to clipboard!")
-        } catch (err) {
-          console.error("Error copying to clipboard:", err)
-        }
-        break
+    if (isOpen && news) {
+      openModal(modalId)
     }
+  }, [isOpen, modalId, news])
+
+  const handleClose = () => {
+    closeModal()
+    onClose()
   }
 
+  // Early return if no news data
+  if (!news || !isOpen) return null
+
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl">
+    <Dialog open={isOpen && activeModal === modalId} onOpenChange={handleClose}>
+      <DialogContent className="max-w-2xl w-11/12 max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">{news.headline}</DialogTitle>
         </DialogHeader>
         <div className="mt-4">
-          <div className="relative h-64 w-full mb-4">
+          <div className="relative h-48 sm:h-64 w-full mb-4">
             <Image
               src={news.imageUrl || news.image || "/placeholder.svg"}
               alt={news.headline}
               fill
-              className="object-cover rounded-lg"
+              style={{ objectFit: 'cover' }}
+              className="rounded-lg"
             />
           </div>
           <div className="flex items-center gap-4 mb-4">
@@ -88,7 +61,7 @@ export default function NewsModal({ isOpen, onClose, news }) {
             </p>
           </div>
         </div>
-        <DialogFooter className="mt-6">
+        <DialogFooter className="mt-6 sticky bottom-0 bg-background pt-4">
           <div className="flex gap-2 w-full justify-center">
             <Button
               variant="secondary"

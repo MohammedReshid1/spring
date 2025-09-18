@@ -2,6 +2,7 @@ import '../styles/globals.css';  // Import global styles
 import { montserrat } from './fonts'
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { ModalProvider } from './contexts/ModalContext'
 
 export const metadata = {
   title: 'Spring of Knowledge Academy',
@@ -42,7 +43,11 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${montserrat.variable} font-sans`}>
       <body className={montserrat.className}>
         <Header />
-        <main>{children}</main>
+        <main>
+          <ModalProvider>
+            {children}
+          </ModalProvider>
+        </main>
         <Footer />
       </body>
     </html>

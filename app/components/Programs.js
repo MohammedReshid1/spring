@@ -41,7 +41,7 @@ const programs = [
 
 function ProgramDialog({ program }) {
   return (
-    <DialogContent className="max-w-6xl w-11/12 min-h-[80vh] p-6">
+    <DialogContent className="max-w-6xl w-11/12 max-h-[90vh] overflow-y-auto p-6">
       <DialogTitle className="sr-only">
         {program.name} Details
       </DialogTitle>

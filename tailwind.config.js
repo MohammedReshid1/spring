@@ -25,6 +25,17 @@ module.exports = {
 			'secondary-dark': '#D97B0F',
 			'secondary-light': '#FFB55F',
 		  },
+		  // Refined Professional Palette
+		  refined: {
+			'off-white': '#FAFAFA',
+			'off-white-light': '#F5F5F5',
+			'charcoal': '#1A1A1A',
+			'charcoal-light': '#3A3A3A',
+			'gray-medium': '#6B6B6B',
+			'gray-light': '#777777',
+			'border-light': '#E5E5E5',
+			'border-medium': '#D0D0D0',
+		  },
 		  // Academic excellence colors
 		  academic: {
 			navy: '#0A2540',
@@ -79,6 +90,9 @@ module.exports = {
 		  xl: '1rem',
 		  '2xl': '1.5rem',
 		  '3xl': '2rem',
+		  // Refined subtle radius (6-8px max)
+		  'refined': '6px',
+		  'refined-lg': '8px',
 		},
 		spacing: {
 		  '18': '4.5rem',
@@ -100,6 +114,10 @@ module.exports = {
 		  'premium-lg': '0 30px 80px -20px rgba(0, 0, 0, 0.2)',
 		  'glow': '0 0 20px rgba(28, 116, 187, 0.3)',
 		  'glow-lg': '0 0 40px rgba(28, 116, 187, 0.4)',
+		  // Refined subtle shadows
+		  'refined-sm': '0 2px 8px rgba(0, 0, 0, 0.08)',
+		  'refined-md': '0 6px 20px rgba(0, 0, 0, 0.10)',
+		  'refined-lg': '0 12px 28px rgba(0, 0, 0, 0.12)',
 		},
 		animation: {
 		  'fade-in-up': 'fadeInUp 0.8s ease-out',

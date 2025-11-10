@@ -3,9 +3,8 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Linkedin, Mail, Phone, Send, MapPin, Award, BookOpen, Users, ChevronRight, ArrowRight } from "lucide-react"
+import { Facebook, Linkedin, Mail, Phone, Send, MapPin, ChevronRight, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
 
 export default function Footer() {
   const [email, setEmail] = useState("")
@@ -43,29 +42,18 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-gradient-to-br from-academic-navy via-brand-primary-dark to-academic-navy text-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }} />
-      </div>
+    <footer className="bg-gray-900 text-white">
 
-      {/* Top Section - Newsletter & Quick Info */}
-      <div className="relative z-10 border-b border-white/10">
-        <div className="container-premium py-16">
+      {/* Top Section - Newsletter */}
+      <div className="border-b border-gray-800">
+        <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl py-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Newsletter */}
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-academic-gold/20 backdrop-blur-sm border border-academic-gold/30 rounded-full text-sm font-medium mb-4">
-                <Mail className="w-4 h-4 text-academic-gold" />
-                <span className="text-academic-gold">Stay Connected</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
                 Join Our Community
               </h2>
-              <p className="text-xl text-gray-300">
+              <p className="text-lg text-gray-300 leading-relaxed">
                 Subscribe to receive updates on events, news, and educational insights from Spring of Knowledge Academy.
               </p>
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
@@ -74,13 +62,13 @@ export default function Footer() {
                   placeholder="Enter your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 px-6 py-4 text-gray-900 bg-white rounded-xl focus:outline-none focus:ring-2 focus:ring-academic-gold shadow-lg"
+                  className="flex-1 px-6 py-4 text-gray-900 bg-white focus:outline-none"
                   required
                 />
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="bg-academic-gold hover:bg-academic-gold/90 text-academic-navy px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-brand-primary hover:opacity-85 text-white px-8 py-4 font-semibold text-lg transition-opacity"
                 >
                   {isLoading ? (
                     <span className="flex items-center gap-2">
@@ -103,14 +91,13 @@ export default function Footer() {
             {/* Quick Stats */}
             <div className="grid grid-cols-2 gap-6">
               {[
-                { icon: Users, number: "2000+", label: "Students Enrolled" },
-                { icon: BookOpen, number: "100+", label: "Expert Educators" },
-                { icon: Award, number: "18+", label: "Years Excellence" },
-                { icon: MapPin, number: "3+", label: "Campus Locations" },
+                { number: "2000+", label: "Students Enrolled" },
+                { number: "100+", label: "Expert Educators" },
+                { number: "18+", label: "Years Excellence" },
+                { number: "3+", label: "Campus Locations" },
               ].map((stat, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                  <stat.icon className="w-8 h-8 text-academic-gold mb-3" />
-                  <div className="text-3xl font-bold mb-1">{stat.number}</div>
+                <div key={index} className="text-center p-6 border border-gray-800 bg-gray-800">
+                  <div className="text-3xl font-bold text-brand-primary mb-1">{stat.number}</div>
                   <div className="text-sm text-gray-300">{stat.label}</div>
                 </div>
               ))}
@@ -120,7 +107,7 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="relative z-10 container-premium py-16">
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
 
           {/* Brand Column */}
@@ -134,29 +121,29 @@ export default function Footer() {
                 className="object-contain brightness-0 invert"
               />
             </Link>
-            <p className="text-2xl italic text-academic-gold font-semibold">
+            <p className="text-xl italic text-gray-300 font-semibold">
               "Where Excellence Is A Habit, Not A Goal"
             </p>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-gray-400 leading-relaxed">
               Since 2006, Spring of Knowledge Academy has been dedicated to providing world-class education and fostering a genuine love for learning in students of all ages.
             </p>
 
             {/* Social Links */}
             <div className="flex gap-4">
               {[
-                { href: "https://telegram.org", icon: Send, label: "Telegram", color: "hover:bg-blue-400" },
-                { href: "https://facebook.com", icon: Facebook, label: "Facebook", color: "hover:bg-blue-600" },
-                { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn", color: "hover:bg-blue-700" },
+                { href: "https://telegram.org", icon: Send, label: "Telegram" },
+                { href: "https://facebook.com", icon: Facebook, label: "Facebook" },
+                { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
               ].map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20 ${social.color} transition-all duration-300 group`}
+                  className="w-12 h-12 border border-gray-700 flex items-center justify-center hover:bg-gray-800 hover:border-brand-primary transition-all duration-300"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <social.icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
@@ -168,8 +155,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="flex items-center gap-2 text-gray-300 hover:text-academic-gold transition-colors duration-200 group">
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <Link href={link.href} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-200">
+                    <ChevronRight className="w-4 h-4" />
                     {link.text}
                   </Link>
                 </li>
@@ -183,8 +170,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {programs.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="flex items-center gap-2 text-gray-300 hover:text-academic-gold transition-colors duration-200 group">
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <Link href={link.href} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-200">
+                    <ChevronRight className="w-4 h-4" />
                     {link.text}
                   </Link>
                 </li>
@@ -198,25 +185,25 @@ export default function Footer() {
             <ul className="space-y-3 mb-6">
               {resources.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="flex items-center gap-2 text-gray-300 hover:text-academic-gold transition-colors duration-200 group">
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <Link href={link.href} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-200">
+                    <ChevronRight className="w-4 h-4" />
                     {link.text}
                   </Link>
                 </li>
               ))}
             </ul>
 
-            <div className="pt-6 border-t border-white/10 space-y-3">
+            <div className="pt-6 border-t border-gray-800 space-y-3">
               <h4 className="text-lg font-semibold text-white mb-4">Contact Info</h4>
-              <a href="tel:+251-11-618-0066" className="flex items-center gap-3 text-gray-300 hover:text-academic-gold transition-colors">
+              <a href="tel:+251-11-618-0066" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
                 <Phone className="w-5 h-5" />
                 <span>+251-11-618-0066</span>
               </a>
-              <a href="mailto:info@springofknowledge.org" className="flex items-center gap-3 text-gray-300 hover:text-academic-gold transition-colors">
+              <a href="mailto:info@springofknowledge.org" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
                 <Mail className="w-5 h-5" />
                 <span>info@springofknowledge.org</span>
               </a>
-              <div className="flex items-start gap-3 text-gray-300">
+              <div className="flex items-start gap-3 text-gray-400">
                 <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
                 <span>Addis Ababa, Ethiopia</span>
               </div>
@@ -226,20 +213,20 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 border-t border-white/10">
-        <div className="container-premium py-6">
+      <div className="border-t border-gray-800">
+        <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
             <p>
               &copy; {new Date().getFullYear()} Spring of Knowledge Academy. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <Link href="/privacy" className="hover:text-academic-gold transition-colors">
+              <Link href="/privacy" className="hover:text-white transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="hover:text-academic-gold transition-colors">
+              <Link href="/terms" className="hover:text-white transition-colors">
                 Terms of Service
               </Link>
-              <Link href="/sitemap" className="hover:text-academic-gold transition-colors">
+              <Link href="/sitemap" className="hover:text-white transition-colors">
                 Sitemap
               </Link>
             </div>

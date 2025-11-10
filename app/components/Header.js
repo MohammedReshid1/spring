@@ -50,20 +50,20 @@ export default function Header() {
   return (
     <>
       {/* Top Bar - Contact Info */}
-      <div className="hidden md:block bg-academic-navy text-white py-2 px-4">
+      <div className="hidden md:block bg-gray-900 text-white py-2 px-4">
         <div className="container mx-auto flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:+251-11-618-0066" className="flex items-center gap-2 hover:text-academic-gold transition-colors">
+            <a href="tel:+251-11-618-0066" className="flex items-center gap-2 hover:opacity-85 transition-opacity">
               <Phone className="w-4 h-4" />
               +251-11-618-0066
             </a>
-            <a href="mailto:info@springofknowledge.org" className="flex items-center gap-2 hover:text-academic-gold transition-colors">
+            <a href="mailto:info@springofknowledge.org" className="flex items-center gap-2 hover:opacity-85 transition-opacity">
               <Mail className="w-4 h-4" />
               info@springofknowledge.org
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <Link href="/contact" className="hover:text-academic-gold transition-colors">
+            <Link href="/contact" className="hover:opacity-85 transition-opacity">
               Admissions Open
             </Link>
           </div>
@@ -74,13 +74,13 @@ export default function Header() {
       <header className={cn(
         "sticky top-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg py-2"
+          ? "bg-white shadow-md py-2"
           : "bg-white shadow-md py-3"
       )}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
             {/* Logo */}
-            <Link href="/" className="flex items-center transition-transform hover:scale-105 duration-300">
+            <Link href="/" className="flex items-center">
               <Image
                 src="/images/SPRING_LOGO.png"
                 alt="Spring of Knowledge Academy Logo"
@@ -98,21 +98,20 @@ export default function Header() {
                   <li key={index} className="relative group">
                     <Link
                       href={link.href}
-                      className="flex items-center gap-1 text-base font-medium py-3 px-4 text-gray-700 hover:text-brand-primary transition-colors duration-300 relative"
+                      className="flex items-center gap-1 text-base font-medium py-3 px-4 text-gray-700 hover:text-brand-primary transition-colors duration-300"
                     >
                       {link.text}
                       {link.submenu && <ChevronDown className="w-4 h-4" />}
-                      <span className="absolute bottom-2 left-4 right-4 h-0.5 bg-brand-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                     </Link>
 
                     {/* Dropdown Menu */}
                     {link.submenu && (
-                      <div className="absolute top-full left-0 mt-0 w-56 bg-white shadow-premium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2">
+                      <div className="absolute top-full left-0 mt-0 w-56 bg-white border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2">
                         {link.submenu.map((sublink, subindex) => (
                           <Link
                             key={subindex}
                             href={sublink.href}
-                            className="block px-4 py-3 text-gray-700 hover:bg-brand-primary-lighter hover:text-brand-primary transition-colors duration-200"
+                            className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-brand-primary transition-colors duration-200"
                           >
                             {sublink.text}
                           </Link>
@@ -122,7 +121,7 @@ export default function Header() {
                   </li>
                 ))}
                 <li>
-                  <Button asChild className="ml-4 bg-brand-primary hover:bg-brand-primary-dark text-white rounded-xl shadow-md hover:shadow-glow transition-all duration-300">
+                  <Button asChild className="ml-4 bg-brand-primary hover:opacity-85 text-white transition-opacity">
                     <Link href="/contact">
                       Contact Us
                     </Link>
@@ -134,7 +133,7 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="lg:hidden">
-                <Button variant="outline" size="icon" className="border-brand-primary text-brand-primary hover:bg-brand-primary-lighter">
+                <Button variant="outline" size="icon" className="border-brand-primary text-brand-primary">
                   <Menu className="w-6 h-6" />
                 </Button>
               </SheetTrigger>
@@ -148,7 +147,7 @@ export default function Header() {
                       <li key={index}>
                         <Link
                           href={link.href}
-                          className="block py-3 px-4 text-base font-medium text-gray-700 hover:bg-brand-primary-lighter hover:text-brand-primary rounded-lg transition-all duration-200"
+                          className="block py-3 px-4 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brand-primary transition-all duration-200"
                           onClick={closeSheet}
                         >
                           {link.text}
@@ -171,7 +170,7 @@ export default function Header() {
                       </li>
                     ))}
                     <li className="pt-4">
-                      <Button asChild className="w-full bg-brand-primary hover:bg-brand-primary-dark text-white rounded-xl">
+                      <Button asChild className="w-full bg-brand-primary hover:opacity-85 text-white transition-opacity">
                         <Link href="/contact" onClick={closeSheet}>
                           Contact Us
                         </Link>

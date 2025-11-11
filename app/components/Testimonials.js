@@ -1,6 +1,8 @@
 "use client"
 
 import React from 'react'
+import { motion } from 'framer-motion'
+import { cardVariants, fadeInUp, staggerContainer, staggerItem } from '@/lib/animations'
 
 export default function Testimonials() {
   const testimonials = [
@@ -26,64 +28,97 @@ export default function Testimonials() {
     }
   ]
 
+  const stats = [
+    { number: '2000+', label: 'Happy Students' },
+    { number: '98%', label: 'Satisfaction Rate' },
+    { number: '95%', label: 'College Acceptance' },
+    { number: '100+', label: 'Success Stories' }
+  ]
+
   return (
-    <section className="bg-gray-50 py-20 lg:py-32">
+    <motion.section
+      className="bg-[#FAFAFA] py-24 lg:py-32"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={staggerContainer}
+    >
       <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
 
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="text-sm font-semibold text-brand-primary uppercase tracking-wider mb-4">
+        <motion.div className="text-center mb-20" variants={fadeInUp}>
+          <div className="text-sm font-semibold text-[#1C74BB] uppercase tracking-wider mb-4">
             Student Success Stories
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-6 leading-tight">
             What Our Students Say
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-[#555555] max-w-3xl mx-auto leading-[1.7]">
             Hear from our students about their transformative experiences at Spring of Knowledge Academy
           </p>
-        </div>
+        </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        {/* Testimonials Grid - Staggered Cards */}
+        <motion.div
+          className="grid md:grid-cols-2 gap-8 mb-20"
+          variants={staggerContainer}
+        >
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white border border-gray-200 p-8">
+            <motion.div
+              key={index}
+              variants={staggerItem}
+              initial="rest"
+              whileHover="hover"
+            >
+              <motion.div
+                className="bg-white border border-[#E8E8E8] p-8 rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+                variants={cardVariants}
+              >
+                {/* Quote Text */}
+                <p className="mb-6 text-[#333333] leading-[1.7] text-base italic">
+                  "{testimonial.quote}"
+                </p>
 
-              {/* Quote Text */}
-              <p className="mb-6 text-gray-700 leading-relaxed text-base italic">
-                "{testimonial.quote}"
-              </p>
-
-              {/* Author Info */}
-              <div className="flex items-center gap-4 pt-4 border-t border-gray-200">
-                <div className="w-12 h-12 bg-brand-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                  {testimonial.author.charAt(0)}
+                {/* Author Info */}
+                <div className="flex items-center gap-4 pt-4 border-t border-[#E8E8E8]">
+                  <div className="w-12 h-12 bg-[#1C74BB] flex items-center justify-center text-white font-bold text-lg flex-shrink-0 rounded">
+                    {testimonial.author.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="font-bold text-[#1A1A1A]">{testimonial.author}</div>
+                    <div className="text-sm text-[#666666]">{testimonial.role}</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="font-bold text-gray-900">{testimonial.author}</div>
-                  <div className="text-sm text-gray-600">{testimonial.role}</div>
-                </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Bottom Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { number: '2000+', label: 'Happy Students' },
-            { number: '98%', label: 'Satisfaction Rate' },
-            { number: '95%', label: 'College Acceptance' },
-            { number: '100+', label: 'Success Stories' }
-          ].map((stat, index) => (
-            <div key={index} className="text-center p-6 border border-gray-200 bg-white">
-              <div className="text-4xl lg:text-5xl font-bold text-brand-primary mb-2">
-                {stat.number}
-              </div>
-              <div className="text-sm text-gray-600">{stat.label}</div>
-            </div>
+        {/* Bottom Stats - Staggered Reveal */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          variants={staggerContainer}
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              variants={staggerItem}
+              initial="rest"
+              whileHover="hover"
+            >
+              <motion.div
+                className="text-center p-8 border border-[#E8E8E8] bg-white rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+                variants={cardVariants}
+              >
+                <div className="text-4xl lg:text-5xl font-bold text-[#1C74BB] mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-sm text-[#666666]">{stat.label}</div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }

@@ -1,136 +1,139 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { cardVariants, fadeInUp, staggerContainer, staggerItem, linkHover } from '@/lib/animations'
 
 const programs = [
-  { 
-    name: "Kindergarten Program", 
-    description: "Where Little Learners Begin Big Adventures!",
+  {
+    name: "Kindergarten",
+    ageRange: "Ages 3-5",
+    students: "150+ Students",
+    description: "Nurturing young minds through play-based learning and gentle guidance in a safe, stimulating environment.",
     image: "/images/SKA-57.jpg",
-    content: {
-      overview: "Our Kindergarten Program is designed to nurture young minds and foster a love for learning from an early age. In this program, children are introduced to foundational concepts through play-based learning, interactive activities, and gentle guidance from our experienced educators.",
-      curriculum: "We focus on developing social skills, emotional intelligence, and basic academic concepts in a safe and stimulating environment. Our curriculum includes age-appropriate lessons in language, mathematics, science, and arts, all tailored to spark curiosity and encourage exploration.",
-      environment: "We believe in creating a warm, welcoming atmosphere where each child feels valued and supported in their unique journey of growth and discovery. Our Kindergarten Program provides a nurturing space for children to develop confidence, creativity, and a lifelong passion for learning."
-    }
   },
-  { 
-    name: "Primary School Program", 
-    description: "Building Strong Foundations for Tomorrow's Leaders!",
+  {
+    name: "Primary School",
+    ageRange: "Grades 1-8",
+    students: "500+ Students",
+    description: "Comprehensive curriculum covering core subjects while emphasizing critical thinking, creativity, and character development.",
     image: "/images/SKA-48.jpg",
-    content: {
-      overview: "The Primary School Program at our institution is crafted to provide a robust educational foundation for students as they progress through their formative years. Our curriculum is comprehensive, covering core subjects such as Mathematics, Science, Language Arts, and Social Studies, while also emphasizing critical thinking, problem-solving, and creativity.",
-      curriculum: "We employ a blend of traditional teaching methods and innovative learning techniques to ensure that each student receives a well-rounded education. Our dedicated teachers work closely with students, identifying individual strengths and areas for improvement, and tailoring their approach accordingly. We also place a strong emphasis on character development, instilling values such as respect, responsibility, and resilience.",
-      environment: "Through various extracurricular activities and projects, we encourage students to explore their interests and develop their talents beyond academics.  Our Primary School fosters a collaborative and supportive learning environment where students feel empowered to reach their full potential."
-    }
   },
-  { 
-    name: "High School Program", 
-    description: "Empowering Students to Achieve and Excel!",
+  {
+    name: "High School",
+    ageRange: "Grades 9-12",
+    students: "400+ Students",
+    description: "Rigorous academic curriculum meeting national standards while preparing students for higher education and beyond.",
     image: "/images/SKA-85.jpg",
-    content: {
-      overview: "Our High School Program is designed to challenge and inspire students as they prepare for higher education and beyond. We offer a rigorous academic curriculum that meets and exceeds national standards, providing students with the knowledge and skills they need to succeed in college and their future careers.",
-      curriculum: "Our program includes advanced placement courses, honors classes, and a wide range of electives to cater to diverse interests and career aspirations. We place a strong emphasis on developing critical thinking, analytical skills, and independent learning.",
-      environment: "Our experienced faculty members are committed to fostering intellectual curiosity and academic excellence. Beyond academics, we offer a rich array of extracurricular activities, including sports, arts, and community service programs, to promote holistic development. We also provide comprehensive college counseling services to guide students through the college application process and help them make informed decisions about their future."
-    }
   },
 ]
 
-function ProgramDialog({ program }) {
-  return (
-    <DialogContent className="max-w-6xl w-11/12 max-h-[90vh] overflow-y-auto p-6">
-      <DialogTitle className="sr-only">
-        {program.name} Details
-      </DialogTitle>
-      <div className="flex flex-col space-y-4">
-        <div className="flex flex-col md:flex-row md:space-x-6">
-          <div className="md:w-1/3 flex flex-col space-y-4">
-            <div className="h-72 md:h-80 relative">
-              <Image 
-                src={program.image} 
-                alt={program.name} 
-                fill
-                style={{ objectFit: 'cover' }}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="rounded-lg"
-              />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold">{program.name}</h3>
-              <p className="text-muted-foreground mt-2">{program.description}</p>
-            </div>
-          </div>
-          <div className="md:w-2/3 space-y-6">
-            <div>
-              <h4 className="text-lg font-semibold mb-2">Program Overview</h4>
-              <p className="text-justify leading-relaxed">
-                {program.content.overview}
-              </p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-2">Curriculum Highlights</h4>
-              <p className="text-justify leading-relaxed">
-                {program.content.curriculum}
-              </p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-2">Learning Environment</h4>
-              <p className="text-justify leading-relaxed">
-                {program.content.environment}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </DialogContent>
-  )
-}
-
 export default function Programs() {
   return (
-    <section className="py-16 bg-background m-10">
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">
-          Our <span style={{ color: '#1C74BB' }}>Programs</span>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <motion.section
+      className="bg-white py-24 lg:py-32"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={staggerContainer}
+    >
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
+
+        {/* Section Header - World-Class Typography */}
+        <motion.div className="text-center mb-20" variants={fadeInUp}>
+          <div className="text-sm font-semibold text-[#1C74BB] uppercase tracking-wider mb-4">
+            Academic Programs
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-6 leading-tight">
+            Our Programs
+          </h2>
+          <p className="text-lg text-[#555555] max-w-3xl mx-auto leading-[1.7]">
+            Comprehensive educational programs designed to nurture young minds and prepare students for success at every stage
+          </p>
+        </motion.div>
+
+        {/* Programs Grid - Sophisticated Card Hover */}
+        <motion.div
+          className="grid md:grid-cols-3 gap-8 mb-16"
+          variants={staggerContainer}
+        >
           {programs.map((program, index) => (
-            <Card key={index} className="group relative overflow-hidden flex flex-col h-[400px] cursor-pointer">
-              <CardHeader>
-                <CardTitle>{program.name}</CardTitle>
-              </CardHeader>
-              <CardContent className="relative p-0 flex-grow ">
-                <div className="absolute inset-0 mb-3">
-                  <Image 
-                    src={program.image} 
-                    alt={program.name} 
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="transition-transform duration-300 group-hover:scale-105"
-                  />
+            <motion.div
+              key={index}
+              variants={staggerItem}
+              initial="rest"
+              whileHover="hover"
+            >
+              <motion.div
+                className="bg-white border border-[#E8E8E8] rounded-lg overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+                variants={cardVariants}
+              >
+
+              {/* Image */}
+              <div className="relative aspect-[4/3] bg-gray-100">
+                <Image
+                  src={program.image}
+                  alt={program.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+
+              {/* Content - World-Class Spacing (32px padding) */}
+              <div className="p-8 space-y-4">
+                <h3 className="text-2xl font-bold text-[#1A1A1A]">
+                  {program.name}
+                </h3>
+
+                <div className="flex gap-4 text-sm text-[#666666]">
+                  <span>{program.ageRange}</span>
+                  <span>•</span>
+                  <span>{program.students}</span>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <CardDescription className="absolute inset-x-0 bottom-0 h-full flex items-center justify-center p-4 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
-                  <span className="text-center">{program.description}</span>
-                </CardDescription>
-              </CardContent>
-              <CardFooter className="justify-center relative z-10 mt-3">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button>Learn More</Button>
-                  </DialogTrigger>
-                  <ProgramDialog program={program} />
-                </Dialog>
-              </CardFooter>
-            </Card>
+
+                <p className="text-[#555555] leading-[1.7]">
+                  {program.description}
+                </p>
+
+                {/* Link with Animated Arrow */}
+                <motion.div
+                  variants={linkHover}
+                  initial="rest"
+                  whileHover="hover"
+                >
+                  <Link
+                    href="/departments"
+                    className="inline-flex items-center gap-2 text-[#1C74BB] font-semibold transition-colors duration-150"
+                  >
+                    Learn More
+                    <span className="inline-block">→</span>
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
           ))}
-        </div>
+        </motion.div>
+
+        {/* Bottom CTA - Elegant Button */}
+        <motion.div className="text-center pt-8" variants={fadeInUp}>
+          <motion.div
+            variants={cardVariants}
+            initial="rest"
+            whileHover="hover"
+            whileTap="tap"
+          >
+            <Link
+              href="/departments"
+              className="inline-block border-2 border-[#1C74BB] text-[#1C74BB] px-8 py-4 font-semibold rounded-md transition-all duration-200 hover:bg-[rgba(28,116,187,0.05)] hover:border-[#155A96]"
+            >
+              View All Programs
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }
-

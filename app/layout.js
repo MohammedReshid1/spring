@@ -1,5 +1,5 @@
 import '../styles/globals.css';  // Import global styles
-import { montserrat } from './fonts'
+import { inter } from './fonts'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { ModalProvider } from './contexts/ModalContext'
@@ -90,7 +90,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${montserrat.variable} font-sans`}>
+    <html lang="en" className={`${inter.variable} font-sans`}>
       <head>
         {/* Structured Data - Organization Schema */}
         <script
@@ -149,7 +149,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className={montserrat.className}>
+      <body className={inter.className}>
         <Header />
         <main>
           <ModalProvider>

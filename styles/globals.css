@@ -8,40 +8,43 @@
   }
 }
 
-/* RADICAL NEO-BRUTALIST DESIGN SYSTEM */
+/* ETHIOPIAN HIGHLAND ACADEMIC DESIGN SYSTEM */
 body {
-  font-family: var(--font-dm), -apple-system, sans-serif;
+  font-family: var(--font-spectral), Georgia, serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #FFFFFF;
-  color: #000000;
+  background: linear-gradient(to bottom, #FAF7F2 0%, #F5EFE7 100%);
+  color: #2C1810;
+  line-height: 1.7;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-archivo), sans-serif;
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  line-height: 0.9;
+  font-family: var(--font-fraunces), serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: #1A3A52;
 }
 
 .font-display {
-  font-family: var(--font-unbounded), sans-serif;
+  font-family: var(--font-newsreader), serif;
+  font-weight: 800;
 }
 
-.font-mono {
-  font-family: var(--font-mono), monospace;
+.font-ui {
+  font-family: var(--font-lexend), sans-serif;
 }
 
 header {
-  background: #000000;
-  border-bottom: 4px solid #FF006E;
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #1A3A52 0%, #2C4A5F 100%);
+  border-bottom: 3px solid #D4850C;
+  color: #FAF7F2;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 4px 6px rgba(28, 24, 16, 0.1);
 }
 
 nav ul {
@@ -74,91 +77,103 @@ nav ul li a {
 footer {
   text-align: center;
   padding: 1rem;
-  background: #000000;
-  color: #FFFFFF;
-  border-top: 4px solid #FF006E;
+  background: linear-gradient(to bottom, #2C1810 0%, #1C0F08 100%);
+  color: #F5EFE7;
+  border-top: 3px solid #D4850C;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D4850C, transparent);
 }
 
 @layer base {
   :root {
-    /* RADICAL BRUTALIST COLOR SYSTEM - High Contrast */
-    --background: 0 0% 100%;      /* Pure white #FFFFFF */
-    --foreground: 0 0% 0%;        /* Pure black #000000 */
+    /* ETHIOPIAN HIGHLAND ACADEMIC COLOR SYSTEM */
+    --background: 40 40% 97%;      /* Warm parchment #FAF7F2 */
+    --foreground: 25 50% 12%;      /* Deep coffee #2C1810 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card: 40 50% 99%;
+    --card-foreground: 25 50% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover: 40 40% 97%;
+    --popover-foreground: 25 50% 12%;
 
-    --primary: 332 100% 50%;      /* Electric hot pink #FF006E */
-    --primary-foreground: 0 0% 100%;
+    --primary: 203 48% 22%;        /* Deep indigo #1A3A52 */
+    --primary-foreground: 40 40% 97%;
 
-    --secondary: 48 100% 50%;     /* Electric yellow #FFD60A */
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 38 85% 44%;       /* Warm amber #D4850C */
+    --secondary-foreground: 25 50% 12%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 20%;
+    --muted: 85 20% 55%;           /* Eucalyptus green #7A9B76 */
+    --muted-foreground: 25 30% 30%;
 
-    --accent: 332 100% 50%;       /* Hot pink accent */
-    --accent-foreground: 0 0% 100%;
+    --accent: 10 40% 52%;          /* Terracotta #B8624F */
+    --accent-foreground: 40 40% 97%;
 
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 40 40% 97%;
 
-    --border: 0 0% 0%;            /* Pure black borders */
-    --input: 0 0% 98%;
-    --ring: 332 100% 50%;
+    --border: 35 25% 88%;
+    --input: 40 30% 94%;
+    --ring: 203 48% 22%;
 
-    --chart-1: 332 100% 50%;      /* Hot pink */
-    --chart-2: 48 100% 50%;       /* Yellow */
-    --chart-3: 180 100% 50%;      /* Cyan */
-    --chart-4: 0 0% 0%;           /* Black */
-    --chart-5: 0 0% 100%;         /* White */
+    --chart-1: 203 48% 22%;        /* Indigo */
+    --chart-2: 38 85% 44%;         /* Amber */
+    --chart-3: 10 40% 52%;         /* Terracotta */
+    --chart-4: 85 20% 55%;         /* Eucalyptus */
+    --chart-5: 25 40% 25%;         /* Coffee brown */
 
-    --radius: 0;                  /* Sharp brutalist corners */
+    --radius: 0.5rem;
 
-    /* Custom brutalist tokens */
-    --gradient-electric: linear-gradient(135deg, #FF006E 0%, #FFD60A 100%);
-    --gradient-cyber: linear-gradient(135deg, #00F5FF 0%, #FF006E 100%);
-    --shadow-brutal: 8px 8px 0px #000000;
-    --shadow-brutal-lg: 12px 12px 0px #000000;
+    /* Ethiopian Highland tokens */
+    --gradient-highland: linear-gradient(135deg, #FAF7F2 0%, #F5EFE7 50%, #EFE6D5 100%);
+    --gradient-coffee: linear-gradient(135deg, #5C3D2E 0%, #2C1810 100%);
+    --gradient-sunrise: linear-gradient(135deg, #D4850C 0%, #B8624F 100%);
+    --shadow-elevated: 0 4px 6px rgba(28, 24, 16, 0.1), 0 2px 4px rgba(28, 24, 16, 0.06);
+    --shadow-depth: 0 10px 15px rgba(28, 24, 16, 0.1), 0 4px 6px rgba(28, 24, 16, 0.05);
   }
 
   .dark {
-    --background: 0 0% 0%;        /* Pure black */
-    --foreground: 0 0% 100%;      /* Pure white */
+    --background: 25 50% 8%;
+    --foreground: 40 40% 95%;
 
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 100%;
+    --card: 25 40% 12%;
+    --card-foreground: 40 40% 95%;
 
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 25 50% 8%;
+    --popover-foreground: 40 40% 95%;
 
-    --primary: 332 100% 60%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 203 50% 45%;
+    --primary-foreground: 25 50% 8%;
 
-    --secondary: 48 100% 60%;
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 38 85% 55%;
+    --secondary-foreground: 25 50% 8%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 80%;
+    --muted: 85 15% 35%;
+    --muted-foreground: 40 30% 70%;
 
-    --accent: 332 100% 60%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 10 45% 58%;
+    --accent-foreground: 25 50% 8%;
 
-    --destructive: 0 100% 60%;
-    --destructive-foreground: 0 0% 0%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 40 40% 95%;
 
-    --border: 0 0% 100%;
-    --input: 0 0% 10%;
-    --ring: 332 100% 60%;
+    --border: 25 30% 25%;
+    --input: 25 30% 18%;
+    --ring: 203 50% 45%;
 
-    --chart-1: 332 100% 60%;
-    --chart-2: 48 100% 60%;
-    --chart-3: 180 100% 60%;
-    --chart-4: 0 0% 100%;
-    --chart-5: 0 0% 0%;
+    --chart-1: 203 50% 50%;
+    --chart-2: 38 85% 60%;
+    --chart-3: 10 45% 60%;
+    --chart-4: 85 20% 50%;
+    --chart-5: 25 35% 40%;
   }
 }
 
@@ -197,22 +212,22 @@ footer {
   background-size: 20px 20px;
 }
 
-/* BRUTALIST HIGH-IMPACT ANIMATIONS */
-@keyframes slideInLeft {
+/* ELEGANT ACADEMIC ANIMATIONS */
+@keyframes gentleFadeIn {
   from {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
-@keyframes slideInRight {
+@keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(-30px);
   }
   to {
     opacity: 1;
@@ -223,7 +238,7 @@ footer {
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
@@ -231,100 +246,90 @@ footer {
   }
 }
 
-@keyframes glitch {
-  0% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    transform: translate(2px, 2px);
-  }
-  80% {
-    transform: translate(2px, -2px);
-  }
-  100% {
-    transform: translate(0);
-  }
-}
-
-@keyframes neonPulse {
+@keyframes gentleFloat {
   0%, 100% {
-    box-shadow: 0 0 20px #FF006E, 0 0 40px #FF006E;
+    transform: translateY(0px);
   }
   50% {
-    box-shadow: 0 0 40px #FF006E, 0 0 80px #FF006E;
+    transform: translateY(-8px);
   }
 }
 
-@keyframes rotate {
+@keyframes warmGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 133, 12, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(212, 133, 12, 0.3);
+  }
+}
+
+@keyframes scholarlyReveal {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
-/* Brutalist Utility Classes */
-.animate-slide-in-left {
-  animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+/* Academic Animation Utilities */
+.animate-gentle-fade {
+  animation: gentleFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.animate-slide-in-right {
-  animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.animate-slide-in {
+  animation: slideIn 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .animate-scale-in {
-  animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.animate-glitch {
-  animation: glitch 0.3s ease-in-out;
+.animate-float {
+  animation: gentleFloat 4s ease-in-out infinite;
 }
 
-.animate-neon-pulse {
-  animation: neonPulse 2s ease-in-out infinite;
+.animate-warm-glow {
+  animation: warmGlow 3s ease-in-out infinite;
 }
 
-/* Orchestrated stagger delays - rapid succession for impact */
-.stagger-1 { animation-delay: 0.05s; }
-.stagger-2 { animation-delay: 0.1s; }
-.stagger-3 { animation-delay: 0.15s; }
-.stagger-4 { animation-delay: 0.2s; }
-.stagger-5 { animation-delay: 0.25s; }
-.stagger-6 { animation-delay: 0.3s; }
-
-/* Brutalist shadow utilities */
-.shadow-brutal {
-  box-shadow: var(--shadow-brutal);
+.animate-scholarly-reveal {
+  animation: scholarlyReveal 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.shadow-brutal-lg {
-  box-shadow: var(--shadow-brutal-lg);
+/* Graceful stagger delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Elevated shadow utilities */
+.shadow-elevated {
+  box-shadow: var(--shadow-elevated);
 }
 
-.shadow-brutal-pink {
-  box-shadow: 8px 8px 0px #FF006E;
+.shadow-depth {
+  box-shadow: var(--shadow-depth);
 }
 
-.shadow-brutal-yellow {
-  box-shadow: 8px 8px 0px #FFD60A;
+.shadow-warm {
+  box-shadow: 0 8px 16px rgba(212, 133, 12, 0.15), 0 4px 8px rgba(212, 133, 12, 0.1);
 }
 
-/* Sharp geometric borders */
-.border-brutal {
-  border: 4px solid #000000;
+/* Decorative border utilities */
+.border-accent {
+  border-color: hsl(var(--accent));
 }
 
-.border-brutal-pink {
-  border: 4px solid #FF006E;
+.border-amber {
+  border-color: #D4850C;
 }
 
-.border-brutal-yellow {
-  border: 4px solid #FFD60A;
+.border-indigo {
+  border-color: #1A3A52;
 }

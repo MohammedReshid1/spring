@@ -1,5 +1,5 @@
 import '../styles/globals.css';  // Import global styles
-import { archivoBlack, ibmPlexMono, unbounded, dmSans } from './fonts'
+import { fraunces, spectral, lexend, newsreader } from './fonts'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { ModalProvider } from './contexts/ModalContext'
@@ -40,8 +40,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${archivoBlack.variable} ${ibmPlexMono.variable} ${unbounded.variable} ${dmSans.variable}`}>
-      <body className={dmSans.className}>
+    <html lang="en" className={`${fraunces.variable} ${spectral.variable} ${lexend.variable} ${newsreader.variable}`}>
+      <body className={spectral.className}>
         <Header />
         <main>
           <ModalProvider>

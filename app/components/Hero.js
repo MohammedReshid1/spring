@@ -17,8 +17,8 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative h-screen overflow-hidden bg-pure-white">
-      {/* Background Image with high contrast overlay */}
+    <section className="relative min-h-screen overflow-hidden bg-gradient-highland">
+      {/* Background Image with warm overlay */}
       <Image
         src="/images/SKA-1.jpg"
         alt="Spring of Knowledge Academy Campus"
@@ -26,95 +26,113 @@ export default function Hero() {
         objectFit="cover"
         quality={100}
         priority
-        className="absolute inset-0 mix-blend-luminosity opacity-20"
+        className="absolute inset-0 opacity-25"
         style={{
-          transform: `scale(${1 + scrollY * 0.0003})`,
+          transform: `scale(${1 + scrollY * 0.0002})`,
         }}
       />
 
-      {/* BRUTALIST GEOMETRIC SHAPES */}
-      <div className="absolute top-20 right-10 w-32 h-32 bg-electric-pink animate-rotate opacity-10"></div>
-      <div className="absolute bottom-40 left-20 w-24 h-24 border-8 border-cyber-yellow opacity-20"></div>
+      {/* Warm gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-parchment/90 via-parchment/70 to-amber/20"></div>
+
+      {/* Decorative elements - inspired by Ethiopian manuscript illuminations */}
+      <div className="absolute top-32 right-12 w-24 h-24 border-4 border-amber/30 rounded-full animate-float"></div>
+      <div className="absolute bottom-32 left-16 w-16 h-16 bg-eucalyptus/20 rounded-lg transform rotate-45 animate-float" style={{animationDelay: '1s'}}></div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-start justify-center h-full text-pure-black px-8 md:px-16 lg:px-24 max-w-7xl">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-coffee px-6 md:px-12 lg:px-24 text-center py-20">
         <motion.div
-          className="mb-4 font-mono text-sm font-bold uppercase tracking-widest text-electric-pink"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-6 font-ui text-sm font-medium uppercase tracking-widest text-amber"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
         >
-          [EDUCATION_SYSTEM.EXE]
+          Addis Ababa, Ethiopia
         </motion.div>
 
         <motion.h1
-          className="text-5xl md:text-7xl lg:text-9xl font-display font-bold mb-8 leading-none uppercase"
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight max-w-4xl"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
         >
-          <span className="block">SPRING</span>
-          <span className="block text-electric-pink">OF</span>
-          <span className="block">KNOWLEDGE</span>
+          <span className="block text-indigo">Spring of</span>
+          <span className="block text-transparent bg-gradient-to-r from-amber via-terracotta to-amber bg-clip-text animate-warm-glow">Knowledge</span>
+          <span className="block text-indigo">Academy</span>
         </motion.h1>
 
         <motion.div
           className="mb-12 max-w-2xl"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
         >
-          <p className="text-xl md:text-2xl font-mono uppercase tracking-wide border-l-4 border-electric-pink pl-6">
-            WHERE EXCELLENCE IS A HABIT NOT A GOAL
+          <p className="text-lg md:text-xl font-serif italic text-eucalyptus border-l-3 border-amber pl-6 leading-relaxed">
+            "Where Excellence is a Habit, Not a Goal"
           </p>
         </motion.div>
+
+        <motion.p
+          className="text-base md:text-lg max-w-3xl mb-12 text-coffee/80 leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+        >
+          Nurturing minds and cultivating futures through quality education rooted in academic excellence, cultural heritage, and community values.
+        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="flex gap-4 flex-wrap"
+          transition={{ duration: 0.8, delay: 1.1 }}
+          className="flex gap-4 flex-wrap justify-center"
         >
           <Button
             variant="secondary"
             size="lg"
             asChild
-            className="bg-electric-pink text-pure-black font-mono font-bold hover:bg-cyber-yellow border-4 border-pure-black px-8 py-6 text-base uppercase tracking-wide shadow-brutal hover:shadow-brutal-lg transition-all duration-150 rounded-none"
+            className="bg-gradient-sunrise text-white font-ui font-semibold hover:shadow-warm border-2 border-amber/50 px-8 py-6 text-base rounded-lg shadow-elevated transition-all duration-300"
           >
-            <Link href="/about">EXPLORE →</Link>
+            <Link href="/about">Discover Our Story</Link>
           </Button>
           <Button
             variant="outline"
             size="lg"
             asChild
-            className="bg-transparent text-pure-black font-mono font-bold border-4 border-pure-black hover:bg-pure-black hover:text-pure-white px-8 py-6 text-base uppercase tracking-wide transition-all duration-150 rounded-none"
+            className="bg-transparent text-indigo font-ui font-semibold border-2 border-indigo hover:bg-indigo hover:text-parchment px-8 py-6 text-base rounded-lg transition-all duration-300"
           >
-            <Link href="/contact">CONNECT</Link>
+            <Link href="/contact">Get in Touch</Link>
           </Button>
         </motion.div>
 
         <motion.div
-          className="mt-12 font-mono text-xs uppercase tracking-widest opacity-50"
+          className="mt-16 font-ui text-sm text-coffee/60"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
         >
-          EST. 20XX • ADDIS ABABA, ETHIOPIA
+          <div className="flex items-center gap-6 justify-center flex-wrap">
+            <span>🎓 K-12 Education</span>
+            <span className="text-amber">•</span>
+            <span>📚 Multiple Branches</span>
+            <span className="text-amber">•</span>
+            <span>🌟 Excellence Since 20XX</span>
+          </div>
         </motion.div>
       </div>
 
-      {/* Brutalist scroll indicator */}
+      {/* Elegant scroll indicator */}
       <motion.div
-        className="absolute bottom-8 right-8"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.5, repeat: Infinity, repeatType: 'reverse', repeatDelay: 0.5 }}
+        transition={{ duration: 0.8, delay: 2, repeat: Infinity, repeatType: 'reverse', repeatDelay: 1 }}
       >
-        <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest">
-          <span className="text-pure-black">SCROLL</span>
-          <div className="w-6 h-6 border-2 border-electric-pink flex items-center justify-center">
-            <span className="text-electric-pink text-lg">↓</span>
-          </div>
+        <div className="flex flex-col items-center gap-2 font-ui text-xs uppercase tracking-wider text-coffee/50">
+          <span>Explore</span>
+          <svg className="w-5 h-5 text-amber animate-float" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
         </div>
       </motion.div>
     </section>

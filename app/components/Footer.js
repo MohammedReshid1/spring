@@ -18,108 +18,116 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-pure-black text-pure-white relative border-t-4 border-electric-pink">
-      {/* Brutalist geometric accent */}
-      <div className="absolute top-0 left-0 w-32 h-32 bg-cyber-yellow opacity-10"></div>
+    <footer className="bg-gradient-coffee text-parchment relative border-t-3 border-amber">
+      {/* Decorative accent */}
+      <div className="absolute top-0 right-0 w-48 h-48 bg-amber/5 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          <div className="space-y-6">
-            <h2 className="text-3xl font-display font-bold uppercase tracking-tighter">SPRING</h2>
-            <p className="text-sm font-mono uppercase tracking-wide text-electric-pink border-l-4 border-electric-pink pl-4">
-              WHERE EXCELLENCE IS A HABIT NOT A GOAL
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-12 h-12 bg-amber rounded-full flex items-center justify-center shadow-warm">
+                <span className="font-display text-2xl font-bold text-indigo">S</span>
+              </div>
+            </div>
+            <h2 className="text-2xl font-serif font-bold">Spring of Knowledge</h2>
+            <p className="text-base font-serif italic text-amber border-l-3 border-amber pl-4 leading-relaxed">
+              "Where Excellence is a Habit, Not a Goal"
             </p>
-            <p className="text-sm opacity-70 leading-relaxed">
-              Dedicated to providing high-quality education and fostering a love for learning.
+            <p className="text-sm opacity-90 leading-relaxed">
+              Nurturing excellence through quality education in Addis Ababa, Ethiopia.
             </p>
           </div>
 
-          <div className="space-y-6">
-            <h3 className="text-lg font-mono font-bold uppercase tracking-wide border-b-2 border-electric-pink pb-2">NAVIGATE</h3>
-            <ul className="space-y-0">
+          <div className="space-y-4">
+            <h3 className="text-lg font-serif font-semibold text-amber border-b border-amber/30 pb-2">Quick Links</h3>
+            <ul className="space-y-2">
               {[
-                { href: "/", text: "HOME" },
-                { href: "/about", text: "ABOUT" },
-                { href: "/upcomingEvents", text: "EVENTS" },
-                { href: "/success", text: "SUCCESS" },
-                { href: "/gallery", text: "GALLERY" },
-                { href: "/departments", text: "DEPARTMENTS" },
+                { href: "/", text: "Home" },
+                { href: "/about", text: "About Us" },
+                { href: "/upcomingEvents", text: "Events" },
+                { href: "/success", text: "Success Stories" },
+                { href: "/gallery", text: "Gallery" },
+                { href: "/departments", text: "Departments" },
               ].map((item) => (
-                <li key={item.href} className="border-b border-pure-white/10">
+                <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="block py-2 font-mono text-sm hover:bg-electric-pink hover:text-pure-black transition-all duration-150 px-2 uppercase tracking-wide"
+                    className="text-sm font-ui hover:text-amber transition-colors duration-300 flex items-center gap-2 group"
                   >
-                    → {item.text}
+                    <ChevronRight className="h-4 w-4 text-amber group-hover:translate-x-1 transition-transform" />
+                    {item.text}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="space-y-6">
-            <h3 className="text-lg font-mono font-bold uppercase tracking-wide border-b-2 border-electric-pink pb-2">CONTACT</h3>
-            <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <Phone className="h-5 w-5 text-electric-pink mt-1 flex-shrink-0" />
-                <span className="font-mono text-sm">+251-96-053-1010</span>
+          <div className="space-y-4">
+            <h3 className="text-lg font-serif font-semibold text-amber border-b border-amber/30 pb-2">Get in Touch</h3>
+            <div className="space-y-3">
+              <div className="flex items-start space-x-3 group">
+                <Phone className="h-5 w-5 text-amber mt-0.5 flex-shrink-0" />
+                <span className="text-sm group-hover:text-amber transition-colors">+251-96-053-1010</span>
               </div>
-              <div className="flex items-start space-x-3">
-                <Mail className="h-5 w-5 text-electric-pink mt-1 flex-shrink-0" />
-                <span className="font-mono text-sm break-all">ethiospring@gmail.com</span>
+              <div className="flex items-start space-x-3 group">
+                <Mail className="h-5 w-5 text-amber mt-0.5 flex-shrink-0" />
+                <span className="text-sm break-all group-hover:text-amber transition-colors">ethiospring@gmail.com</span>
               </div>
             </div>
 
             <div className="flex space-x-3 mt-6">
               {[
-                { href: "https://telegram.org", icon: Send, label: "TG" },
-                { href: "https://facebook.com", icon: Facebook, label: "FB" },
-                { href: "https://linkedin.com", icon: Linkedin, label: "LI" },
+                { href: "https://telegram.org", icon: Send, label: "Telegram" },
+                { href: "https://facebook.com", icon: Facebook, label: "Facebook" },
+                { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
               ].map((social) => (
                 <Link
                   key={social.label}
                   href={social.href}
-                  className="w-12 h-12 border-2 border-electric-pink hover:bg-electric-pink hover:text-pure-black transition-all duration-150 flex items-center justify-center font-mono text-xs font-bold"
+                  className="w-10 h-10 border-2 border-amber/50 hover:bg-amber hover:text-coffee rounded-full transition-all duration-300 flex items-center justify-center"
+                  title={social.label}
                 >
-                  {social.label}
+                  <social.icon className="h-4 w-4" />
                 </Link>
               ))}
             </div>
           </div>
 
-          <div className="space-y-6">
-            <h3 className="text-lg font-mono font-bold uppercase tracking-wide border-b-2 border-electric-pink pb-2">UPDATES</h3>
-            <p className="text-sm font-mono opacity-70">
-              SUBSCRIBE FOR NEWS + EVENTS
+          <div className="space-y-4">
+            <h3 className="text-lg font-serif font-semibold text-amber border-b border-amber/30 pb-2">Stay Connected</h3>
+            <p className="text-sm opacity-90">
+              Subscribe for news, events, and updates from our academy.
             </p>
             <form onSubmit={handleSubmit} className="space-y-3">
               <input
                 type="email"
-                placeholder="YOUR@EMAIL.COM"
+                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 bg-transparent text-pure-white font-mono text-sm border-2 border-pure-white focus:outline-none focus:border-electric-pink transition-colors placeholder:text-pure-white/30 uppercase"
+                className="w-full px-4 py-3 bg-parchment/10 text-parchment font-ui text-sm border border-amber/30 rounded-lg focus:outline-none focus:border-amber focus:bg-parchment/20 transition-all placeholder:text-parchment/40"
                 required
               />
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`w-full px-4 py-3 font-mono font-bold text-pure-black bg-electric-pink border-4 border-electric-pink hover:bg-cyber-yellow hover:border-cyber-yellow transition-all duration-150 shadow-brutal-pink hover:shadow-brutal-yellow uppercase tracking-wide ${
+                className={`w-full px-4 py-3 font-ui font-semibold text-coffee bg-amber border-2 border-amber hover:bg-transparent hover:text-amber rounded-lg transition-all duration-300 shadow-warm ${
                   isLoading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
-                {isLoading ? "LOADING..." : "SUBSCRIBE →"}
+                {isLoading ? "Subscribing..." : "Subscribe"}
               </button>
             </form>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t-2 border-pure-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs font-mono uppercase tracking-widest opacity-50">
-            © {new Date().getFullYear()} SPRING OF KNOWLEDGE ACADEMY
+        <div className="mt-12 pt-8 border-t border-parchment/20 flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-70">
+          <p>
+            © {new Date().getFullYear()} Spring of Knowledge Academy. All rights reserved.
           </p>
-          <p className="text-xs font-mono uppercase tracking-widest opacity-50">
-            ADDIS ABABA, ETHIOPIA
+          <p className="flex items-center gap-2">
+            <span>📍</span>
+            <span>Addis Ababa, Ethiopia</span>
           </p>
         </div>
       </div>

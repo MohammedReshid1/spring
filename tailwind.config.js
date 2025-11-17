@@ -9,20 +9,21 @@ module.exports = {
 	theme: {
 	  extend: {
 		fontFamily: {
-		  sans: ['var(--font-dm)', 'system-ui', 'sans-serif'],
-		  display: ['var(--font-archivo)', 'sans-serif'],
-		  unbounded: ['var(--font-unbounded)', 'sans-serif'],
-		  mono: ['var(--font-mono)', 'monospace'],
+		  sans: ['var(--font-spectral)', 'Georgia', 'serif'],
+		  serif: ['var(--font-fraunces)', 'serif'],
+		  display: ['var(--font-newsreader)', 'serif'],
+		  ui: ['var(--font-lexend)', 'sans-serif'],
 		},
 		colors: {
 		  background: 'hsl(var(--background))',
 		  foreground: 'hsl(var(--foreground))',
-		  // RADICAL BRUTALIST COLORS
-		  'electric-pink': '#FF006E',
-		  'cyber-yellow': '#FFD60A',
-		  'cyber-cyan': '#00F5FF',
-		  'pure-black': '#000000',
-		  'pure-white': '#FFFFFF',
+		  // ETHIOPIAN HIGHLAND ACADEMIC COLORS
+		  'indigo': '#1A3A52',
+		  'amber': '#D4850C',
+		  'terracotta': '#B8624F',
+		  'eucalyptus': '#7A9B76',
+		  'coffee': '#2C1810',
+		  'parchment': '#FAF7F2',
 		  secondary: {
 			DEFAULT: 'hsl(var(--secondary))',
 			foreground: 'hsl(var(--secondary-foreground))'
@@ -68,22 +69,22 @@ module.exports = {
 		  sm: 'calc(var(--radius) - 4px)'
 		},
 		backgroundImage: {
-		  'gradient-electric': 'var(--gradient-electric)',
-		  'gradient-cyber': 'var(--gradient-cyber)',
+		  'gradient-highland': 'var(--gradient-highland)',
+		  'gradient-coffee': 'var(--gradient-coffee)',
+		  'gradient-sunrise': 'var(--gradient-sunrise)',
 		},
 		boxShadow: {
-		  'brutal': 'var(--shadow-brutal)',
-		  'brutal-lg': 'var(--shadow-brutal-lg)',
-		  'brutal-pink': '8px 8px 0px #FF006E',
-		  'brutal-yellow': '8px 8px 0px #FFD60A',
+		  'elevated': 'var(--shadow-elevated)',
+		  'depth': 'var(--shadow-depth)',
+		  'warm': '0 8px 16px rgba(212, 133, 12, 0.15), 0 4px 8px rgba(212, 133, 12, 0.1)',
 		},
 		animation: {
-		  'slide-in-left': 'slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-		  'slide-in-right': 'slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-		  'scale-in': 'scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-		  'glitch': 'glitch 0.3s ease-in-out',
-		  'neon-pulse': 'neonPulse 2s ease-in-out infinite',
-		  'rotate': 'rotate 20s linear infinite',
+		  'gentle-fade': 'gentleFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards',
+		  'slide-in': 'slideIn 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards',
+		  'scale-in': 'scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards',
+		  'float': 'gentleFloat 4s ease-in-out infinite',
+		  'warm-glow': 'warmGlow 3s ease-in-out infinite',
+		  'scholarly-reveal': 'scholarlyReveal 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards',
 		}
 	  }
 	},

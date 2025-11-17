@@ -21,8 +21,8 @@ export default function Header() {
   }
 
   return (
-    <header className="flex justify-between items-center py-1.5 px-4 bg-white shadow-sm h-18 overflow-visible">
-  <div className="logo -my-5">
+    <header className="flex justify-between items-center py-1.5 px-4 bg-parchment/95 backdrop-blur-lg shadow-sm border-b border-sage/20 h-18 overflow-visible sticky top-0 z-50">
+  <div className="logo -my-5 animate-fade-in-scale">
   <Link href="/" legacyBehavior>
       <a>
         <Image
@@ -45,30 +45,30 @@ export default function Header() {
         { href: "/gallery", text: "Gallery" },
         { href: "/departments", text: "Departments" },
       ].map((link, index) => (
-        <li key={index}>
+        <li key={index} className={`animate-fade-in-up stagger-${index + 1}`}>
           <Link
             href={link.href}
-            className="text-larg font-medium py-1.5 px-2 relative group border border-transparent"
+            className="text-base font-medium py-1.5 px-3 relative group border border-transparent rounded-lg"
           >
-            <span className="text-[#111827] group-hover:text-[#1C74BB] transition-colors duration-300">
+            <span className="text-forest group-hover:text-terracotta transition-colors duration-300">
               {link.text}
             </span>
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1C74BB] group-hover:w-full transition-all duration-300"></span>
+            <span className="absolute bottom-1 left-3 w-0 h-[2px] bg-gradient-to-r from-terracotta to-honey group-hover:w-[calc(100%-1.5rem)] transition-all duration-300"></span>
             <style jsx>{`
               .group:hover {
-                background-color: #ffffff;
-                border-color: #1C74BB;
+                background-color: rgba(199, 116, 71, 0.05);
+                border-color: rgba(199, 116, 71, 0.2);
               }
             `}</style>
           </Link>
         </li>
       ))}
-        <li>
+        <li className="animate-fade-in-up stagger-6">
           <Link
             href="/contact"
             className={cn(
               buttonVariants({ variant: "outline", size: "sm" }),
-              "text-sm font-light bg-[#1C74BB] text-white border border-white hover:bg-white hover:text-[#1C74BB] hover:border-[#1C74BB] py-1.5 px-3 transition-colors duration-300"
+              "text-sm font-semibold bg-gradient-to-r from-forest to-forest/90 text-white border-2 border-forest hover:from-terracotta hover:to-honey hover:border-terracotta py-1.5 px-4 transition-all duration-300 shadow-md hover:shadow-lg"
             )}
           >
             Contact Us
@@ -80,16 +80,16 @@ export default function Header() {
 
   <nav className="lg:hidden">
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger className={buttonVariants({ variant: "outline", size: "sm", className: "p-2" })}>
+      <SheetTrigger className={buttonVariants({ variant: "outline", size: "sm", className: "p-2 border-forest/30 hover:bg-forest/5" })}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 18L20 18" stroke="#000000" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M4 12L20 12" stroke="#000000" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M4 6L20 6" stroke="#000000" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M4 18L20 18" stroke="#15543b" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M4 12L20 12" stroke="#15543b" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M4 6L20 6" stroke="#15543b" strokeWidth="2" strokeLinecap="round"/>
         </svg>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="bg-parchment">
         <SheetHeader>
-          <SheetTitle className="text-lg">Menu</SheetTitle>
+          <SheetTitle className="text-lg font-serif text-forest">Menu</SheetTitle>
         </SheetHeader>
         <ul className="space-y-4 mt-6">
           {[
@@ -102,22 +102,22 @@ export default function Header() {
             <li key={index}>
               <Link
                 href={link.href}
-                className="text-sm font-light relative group"
+                className="text-base font-medium relative group block py-2"
                 onClick={closeSheet}
               >
-                <span className="text-black group-hover:text-[#1C74BB] transition-colors duration-300">
+                <span className="text-forest group-hover:text-terracotta transition-colors duration-300">
                   {link.text}
                 </span>
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1C74BB] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-terracotta to-honey group-hover:w-full transition-all duration-300"></span>
               </Link>
             </li>
           ))}
           <li>
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className={cn(
                 buttonVariants({ variant: "outline" }),
-                "text-sm font-light bg-[#1C74BB] text-white hover:bg-[#1C74BB] hover:text-white border-[#1C74BB] rounded-full"
+                "text-sm font-semibold bg-forest text-white hover:bg-terracotta hover:text-white border-forest hover:border-terracotta rounded-lg transition-all duration-300"
               )}
               onClick={closeSheet}
             >

@@ -1,5 +1,5 @@
 import '../styles/globals.css';  // Import global styles
-import { montserrat } from './fonts'
+import { crimsonPro, syne, jost } from './fonts'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { ModalProvider } from './contexts/ModalContext'
@@ -40,8 +40,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${montserrat.variable} font-sans`}>
-      <body className={montserrat.className}>
+    <html lang="en" className={`${crimsonPro.variable} ${syne.variable} ${jost.variable}`}>
+      <body className={jost.className}>
         <Header />
         <main>
           <ModalProvider>

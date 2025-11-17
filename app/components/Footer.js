@@ -18,18 +18,21 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-[#111827] text-gray-300">
-      <div className="container mx-auto px-6 py-12">
+    <footer className="bg-gradient-to-br from-forest via-forest/95 to-[#0d3b27] text-parchment/90 relative overflow-hidden">
+      {/* Organic texture overlay */}
+      <div className="absolute inset-0 texture-overlay opacity-20"></div>
+
+      <div className="container mx-auto px-6 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight text-white">Spring of Knowledge Academy</h2>
-            <p className="text-lg italic">"Where Excellence Is A Habit Not A Goal"</p>
-            <p className="text-sm opacity-80">
+            <h2 className="text-2xl font-serif font-bold tracking-tight text-parchment">Spring of Knowledge Academy</h2>
+            <p className="text-lg font-serif italic text-honey">"Where Excellence Is A Habit Not A Goal"</p>
+            <p className="text-sm opacity-90">
               Dedicated to providing high-quality education and fostering a love for learning in students of all ages.
             </p>
           </div>
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-white">Quick Links</h3>
+            <h3 className="text-xl font-serif font-semibold text-parchment">Quick Links</h3>
             <ul className="space-y-2">
               {[
                 { href: "/", text: "Home" },
@@ -39,9 +42,9 @@ export default function Footer() {
                 { href: "/gallery", text: "Gallery" },
                 { href: "/departments", text: "Departments" },
               ].map((item) => (
-                <li key={item.href} className="flex items-center space-x-2">
-                  <ChevronRight className="h-4 w-4 text-[#1C74BB]" />
-                  <Link href={item.href} className="text-[#1C74BB] hover:text-white transition-colors duration-200">
+                <li key={item.href} className="flex items-center space-x-2 group">
+                  <ChevronRight className="h-4 w-4 text-honey group-hover:translate-x-1 transition-transform duration-200" />
+                  <Link href={item.href} className="text-parchment/80 hover:text-honey transition-colors duration-200">
                     {item.text}
                   </Link>
                 </li>
@@ -49,15 +52,15 @@ export default function Footer() {
             </ul>
           </div>
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-white">Contact Us</h3>
+            <h3 className="text-xl font-serif font-semibold text-parchment">Contact Us</h3>
             <div className="space-y-2">
-              <div className="flex items-center space-x-2">
-                <Phone className="h-5 w-5" />
-                <span>+251-96-053-1010</span>
+              <div className="flex items-center space-x-2 group">
+                <Phone className="h-5 w-5 text-honey" />
+                <span className="group-hover:text-honey transition-colors duration-200">+251-96-053-1010</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="h-5 w-5" />
-                <span>ethiospring@gmail.com</span>
+              <div className="flex items-center space-x-2 group">
+                <Mail className="h-5 w-5 text-honey" />
+                <span className="group-hover:text-honey transition-colors duration-200">ethiospring@gmail.com</span>
               </div>
             </div>
             <div className="flex space-x-4 mt-4">
@@ -66,7 +69,11 @@ export default function Footer() {
                 { href: "https://facebook.com", icon: Facebook, label: "Facebook" },
                 { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
               ].map((social) => (
-                <Link key={social.label} href={social.href} className="text-[#1C74BB] hover:text-white transition-colors duration-200">
+                <Link
+                  key={social.label}
+                  href={social.href}
+                  className="text-honey hover:text-terracotta transition-all duration-200 hover:scale-110 transform"
+                >
                   <social.icon className="h-6 w-6" />
                   <span className="sr-only">{social.label}</span>
                 </Link>
@@ -74,21 +81,21 @@ export default function Footer() {
             </div>
           </div>
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-white">Stay Updated</h3>
-            <p className="text-sm opacity-80">Subscribe to our newsletter for the latest updates and offers.</p>
+            <h3 className="text-xl font-serif font-semibold text-parchment">Stay Updated</h3>
+            <p className="text-sm opacity-90">Subscribe to our newsletter for the latest updates and offers.</p>
             <form onSubmit={handleSubmit} className="space-y-2">
               <input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2 text-gray-700 bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-[#1C74BB]"
+                className="w-full px-3 py-2 text-forest bg-parchment rounded-lg focus:outline-none focus:ring-2 focus:ring-honey border border-sage/30"
                 required
               />
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`w-full px-4 py-2 text-white bg-[#1C74BB] rounded-md transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#1C74BB] focus:ring-opacity-50 ${
+                className={`w-full px-4 py-2 font-semibold text-white bg-gradient-to-r from-terracotta to-honey rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-honey focus:ring-opacity-50 shadow-md hover:shadow-lg ${
                   isLoading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
@@ -107,8 +114,8 @@ export default function Footer() {
             </form>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-gray-700 text-center">
-          <p className="text-sm opacity-70">
+        <div className="mt-12 pt-8 border-t border-parchment/20 text-center">
+          <p className="text-sm opacity-80">
             &copy; {new Date().getFullYear()} Spring of Knowledge Academy. All rights reserved.
           </p>
         </div>

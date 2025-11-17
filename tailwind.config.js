@@ -9,12 +9,18 @@ module.exports = {
 	theme: {
 	  extend: {
 		fontFamily: {
-		  sans: ['var(--font-montserrat)', 'sans-serif'],
+		  sans: ['var(--font-jost)', 'system-ui', 'sans-serif'],
+		  serif: ['var(--font-crimson)', 'Georgia', 'serif'],
+		  display: ['var(--font-syne)', 'sans-serif'],
 		},
 		colors: {
 		  background: 'hsl(var(--background))',
 		  foreground: 'hsl(var(--foreground))',
-		  main: '#1C74BB',
+		  forest: '#15543b',
+		  terracotta: '#c77447',
+		  honey: '#f0a04b',
+		  sage: '#9ca986',
+		  parchment: '#faf6f0',
 		  secondary: {
 			DEFAULT: 'hsl(var(--secondary))',
 			foreground: 'hsl(var(--secondary-foreground))'
@@ -58,6 +64,17 @@ module.exports = {
 		  lg: 'var(--radius)',
 		  md: 'calc(var(--radius) - 2px)',
 		  sm: 'calc(var(--radius) - 4px)'
+		},
+		backgroundImage: {
+		  'gradient-organic': 'var(--gradient-organic)',
+		  'gradient-forest': 'var(--gradient-forest)',
+		  'gradient-warmth': 'var(--gradient-warmth)',
+		},
+		animation: {
+		  'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+		  'fade-in-scale': 'fadeInScale 0.5s ease-out forwards',
+		  'float': 'float 3s ease-in-out infinite',
+		  'shimmer': 'shimmer 2s linear infinite',
 		}
 	  }
 	},

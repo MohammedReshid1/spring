@@ -21,57 +21,39 @@ export default function Header() {
   }
 
   return (
-    <header className="flex justify-between items-center py-1.5 px-4 bg-parchment/95 backdrop-blur-lg shadow-sm border-b border-sage/20 h-18 overflow-visible sticky top-0 z-50">
-  <div className="logo -my-5 animate-fade-in-scale">
+    <header className="flex justify-between items-center py-4 px-6 bg-pure-black border-b-4 border-electric-pink h-20 sticky top-0 z-50">
+  <div className="logo animate-scale-in">
   <Link href="/" legacyBehavior>
-      <a>
-        <Image
-          src="/images/SPRING_LOGO.png"
-          alt="Academy Logo"
-          width={150}
-          height={75}
-          className="object-contain"
-        />
+      <a className="font-display text-2xl font-bold text-pure-white uppercase tracking-tighter hover:text-electric-pink transition-colors duration-200">
+        SPRING
       </a>
     </Link>
   </div>
   <nav className="hidden lg:block">
-    <ul className="flex space-x-3">
+    <ul className="flex space-x-1">
       {[
-        { href: "/", text: "Home" },
-        { href: "/about", text: "About Us" },
-        { href: "/upcomingEvents", text: "Events" },
-        { href: "/success", text: "Success Stories" },
-        { href: "/gallery", text: "Gallery" },
-        { href: "/departments", text: "Departments" },
+        { href: "/", text: "HOME" },
+        { href: "/about", text: "ABOUT" },
+        { href: "/upcomingEvents", text: "EVENTS" },
+        { href: "/success", text: "SUCCESS" },
+        { href: "/gallery", text: "GALLERY" },
+        { href: "/departments", text: "DEPTS" },
       ].map((link, index) => (
-        <li key={index} className={`animate-fade-in-up stagger-${index + 1}`}>
+        <li key={index} className={`animate-slide-in-right stagger-${index + 1}`}>
           <Link
             href={link.href}
-            className="text-base font-medium py-1.5 px-3 relative group border border-transparent rounded-lg"
+            className="text-xs font-mono font-bold py-2 px-3 text-pure-white hover:bg-electric-pink hover:text-pure-black transition-all duration-150 block uppercase tracking-wide border-2 border-transparent hover:border-electric-pink"
           >
-            <span className="text-forest group-hover:text-terracotta transition-colors duration-300">
-              {link.text}
-            </span>
-            <span className="absolute bottom-1 left-3 w-0 h-[2px] bg-gradient-to-r from-terracotta to-honey group-hover:w-[calc(100%-1.5rem)] transition-all duration-300"></span>
-            <style jsx>{`
-              .group:hover {
-                background-color: rgba(199, 116, 71, 0.05);
-                border-color: rgba(199, 116, 71, 0.2);
-              }
-            `}</style>
+            {link.text}
           </Link>
         </li>
       ))}
-        <li className="animate-fade-in-up stagger-6">
+        <li className="animate-slide-in-right stagger-6">
           <Link
             href="/contact"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "sm" }),
-              "text-sm font-semibold bg-gradient-to-r from-forest to-forest/90 text-white border-2 border-forest hover:from-terracotta hover:to-honey hover:border-terracotta py-1.5 px-4 transition-all duration-300 shadow-md hover:shadow-lg"
-            )}
+            className="text-xs font-mono font-bold bg-electric-pink text-pure-black border-4 border-electric-pink hover:bg-cyber-yellow hover:border-cyber-yellow py-2 px-4 transition-all duration-150 block uppercase tracking-wide shadow-brutal-pink hover:shadow-brutal-yellow"
           >
-            Contact Us
+            CONTACT
           </Link>
         </li>
 
@@ -80,48 +62,42 @@ export default function Header() {
 
   <nav className="lg:hidden">
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger className={buttonVariants({ variant: "outline", size: "sm", className: "p-2 border-forest/30 hover:bg-forest/5" })}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 18L20 18" stroke="#15543b" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M4 12L20 12" stroke="#15543b" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M4 6L20 6" stroke="#15543b" strokeWidth="2" strokeLinecap="round"/>
+      <SheetTrigger className="p-2 border-4 border-electric-pink hover:bg-electric-pink group transition-colors">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 18L20 18" stroke="#FFFFFF" className="group-hover:stroke-black" strokeWidth="3" strokeLinecap="square"/>
+          <path d="M4 12L20 12" stroke="#FFFFFF" className="group-hover:stroke-black" strokeWidth="3" strokeLinecap="square"/>
+          <path d="M4 6L20 6" stroke="#FFFFFF" className="group-hover:stroke-black" strokeWidth="3" strokeLinecap="square"/>
         </svg>
       </SheetTrigger>
-      <SheetContent className="bg-parchment">
+      <SheetContent className="bg-pure-black border-l-4 border-electric-pink">
         <SheetHeader>
-          <SheetTitle className="text-lg font-serif text-forest">Menu</SheetTitle>
+          <SheetTitle className="text-2xl font-display text-electric-pink uppercase">MENU</SheetTitle>
         </SheetHeader>
-        <ul className="space-y-4 mt-6">
+        <ul className="space-y-0 mt-8">
           {[
-            { href: "/", text: "Home" },
-            { href: "/about", text: "About Us" },
-            { href: "/upcomingEvents", text: "Events" },
-            { href: "/success", text: "Success Stories" },
-            { href: "/gallery", text: "Gallery" },
+            { href: "/", text: "HOME" },
+            { href: "/about", text: "ABOUT" },
+            { href: "/upcomingEvents", text: "EVENTS" },
+            { href: "/success", text: "SUCCESS" },
+            { href: "/gallery", text: "GALLERY" },
           ].map((link, index) => (
-            <li key={index}>
+            <li key={index} className="border-b-2 border-electric-pink/20">
               <Link
                 href={link.href}
-                className="text-base font-medium relative group block py-2"
+                className="text-lg font-mono font-bold text-pure-white hover:bg-electric-pink hover:text-pure-black transition-all duration-150 block py-4 px-4 uppercase"
                 onClick={closeSheet}
               >
-                <span className="text-forest group-hover:text-terracotta transition-colors duration-300">
-                  {link.text}
-                </span>
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-terracotta to-honey group-hover:w-full transition-all duration-300"></span>
+                {link.text}
               </Link>
             </li>
           ))}
-          <li>
+          <li className="mt-6">
             <Link
               href="/contact"
-              className={cn(
-                buttonVariants({ variant: "outline" }),
-                "text-sm font-semibold bg-forest text-white hover:bg-terracotta hover:text-white border-forest hover:border-terracotta rounded-lg transition-all duration-300"
-              )}
+              className="text-base font-mono font-bold bg-electric-pink text-pure-black border-4 border-electric-pink hover:bg-cyber-yellow hover:border-cyber-yellow py-4 px-6 transition-all duration-150 block uppercase text-center shadow-brutal-pink hover:shadow-brutal-yellow"
               onClick={closeSheet}
             >
-              Contact Us
+              CONTACT US
             </Link>
           </li>
         </ul>
